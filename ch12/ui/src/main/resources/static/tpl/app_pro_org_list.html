@@ -1,0 +1,30 @@
+<!-- breadcrumb -->
+<ul class="breadcrumb bg-white b-b wrapper-sm m-b-none">
+  <li><i class="fa fa-home"></i> 主页</li>
+  <li>我的项目</li>
+  <li class="active">查看组织</li>
+</ul>
+<!-- / breadcrumb -->
+<!-- hbox layout -->
+<div class="hbox hbox-auto-xs hbox-auto-sm">
+  <div class="wrapper-sm" >
+    <div class="panel panel-default">
+      <div ng-model="showMinDir" ng-value="false"  ng-controller="projectOrgBroweController">
+        <div class="row wrapper-sm">
+          <div class="col-sm-12">
+            <!--<button class="btn m-b-xs btn btn-default btn-addon" ui-sref="app.project.org-manage"><i class="icon icon-settings"></i>管理组织</button>-->
+            <button class="btn m-b-xs btn btn-default btn-addon" ui-sref="app.project.attedce-count"><i class="icon icon-bar-chart"></i>查看考勤统计</button>
+            <!--<button class="btn m-b-xs btn btn-default btn-addon" mwl-confirm message='你确定退出项目吗?' confirm-text='是的' cancel-text='取消' on-confirm='quitProjectOrg()' confirm-button-type='danger'><i class="icon icon-logout"></i>退出项目</button>-->
+            <input class="w-md form-control pull-right" type="text" data-ng-model="filterString"	placeholder="查找用户" />
+          </div>
+        </div>
+        <div>
+          <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+        </div>
+        <div class="b-t">
+          <tree-grid tree-data="projectOrgs" tree-control="orgBrowe" col-defs="col_defs" expand-level="2" expand-on="expanding_property" icon-leaf= "glyphicon glyphicon-user"></tree-grid>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

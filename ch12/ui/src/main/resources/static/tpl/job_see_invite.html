@@ -1,0 +1,171 @@
+<!-- breadcrumb -->
+<ul class="breadcrumb bg-white b-b wrapper-sm m-b-none">
+    <li><i class="fa fa-home"></i> 主页</li>
+    <li>我要求活</li>
+    <li>查看招工信息</li>
+</ul>
+<!-- / breadcrumb -->
+<!-- Information Perfection -->
+
+<div class="wrapper-sm" ng-controller="JobSeeInviteController">
+    <div class="panel panel-default m-b-xs">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-1 w-xs l-h-2x">招聘类型：</div>
+                <div class="col-sm-11">
+                    <a class="btn btn-sm" ng-class="{'btn-info':firstTypeClassShow[0]}" name="licence" ng-click="typeSelcted('person');">个人</a>
+                    <a class="btn btn-sm" ng-class="{'btn-info':firstTypeClassShow[1]}" name="licence" ng-click="typeSelcted('team');">班组</a>
+                    <a class="btn btn-sm" ng-class="{'btn-info':firstTypeClassShow[2]}" name="licence"  ng-click="typeSelcted('company');">公司</a>
+                    <!--
+                    <a class="btn btn-default btn-xs pull-right" ng-init="isCollapsed =true"
+                    ng-click="isCollapsed = !isCollapsed">更多选项</a>
+                    -->
+                </div>
+                <div class="line b-b m-t-xs m-b-xs"></div>
+                <div ng-show="licence == 'person'">
+                    <div class="col-sm-1 w-xs l-h-2x">职位类别：</div>
+                    <div class="col-sm-11 ">
+                        <a class="btn btn-sm" ng-class="{'btn-info':workTypeClassShow[$index]}" ng-repeat="type in workTypes" ng-click="setPWorkType(type.value)">{{type.key}}</a>
+                    </div>
+                    <div collapse="isCollapsed">
+                        <div class="line b-b m-t-xs m-b-xs"></div>
+                        <div class="col-sm-1 w-xs l-h-2x">相关福利：</div>
+                        <div class="col-sm-11 ">
+                            <div class="checkbox m-t-xs m-b-none">
+                                <label class="i-checks w-sm" ng-repeat="jobBoonType in jobBoonTypes">
+                                    <input type="checkbox" checklist-model="pBoon" checklist-value="jobBoonType.value">
+                                    <i></i>
+                                    {{jobBoonType.key}}
+                                </label>
+                            </div>
+                        </div>
+                        <div class="line b-b m-t-xs m-b-xs"></div>
+                        <div class="col-sm-1 w-xs l-h-2x">工资待遇：</div>
+                        <div class="col-sm-11">
+                            <input type="text" value="0" class="form-control input-sm w-sm pull-left">
+                            <span class="pull-left l-h-2x">&nbsp;至&nbsp;</span>
+                            <input type="text" value="0" class="form-control input-sm w-sm pull-left">
+                            <select name="account" class="form-control w-xs input-sm pull-left m-l-xs"
+                                    ng-model="salary1"
+                                    ng-options="type.value as type.key for type in salary1Types">
+                            </select>
+                            <button class="btn btn-default btn-sm pull-left m-l-xs">确定</button>
+                        </div>
+                    </div>
+                </div>
+                <div ng-show="licence == 'team'">
+                    <div class="col-sm-1 w-xs l-h-2x">班组大类：</div>
+                    <div class="col-sm-11 ">
+                        <a class="btn btn-sm" ng-class="{'btn-info':teamTypeClassShow[$index]}" ng-repeat="type in teamTypes"
+                           ng-click="teamTypeChange(type.value)">{{type.key}}</a>
+                    </div>
+                    <div class="line b-b m-t-xs m-b-xs"></div>
+                    <div class="col-sm-1 w-xs l-h-2x">班组小类：</div>
+                    <div class="col-sm-11 ">
+                        <a class="btn btn-sm" ng-class="{'btn-info':detailTeamTypeClassShow[$index]}" ng-repeat="type in detailTeamTypes"
+                           ng-click="setTDetailTeamType(type.value)">{{type.key}}</a>
+                    </div>
+                    <div collapse="isCollapsed">
+                        <div class="line b-b m-t-xs m-b-xs"></div>
+                        <div class="col-sm-1 w-xs l-h-2x">相关福利：</div>
+                        <div class="col-sm-11 ">
+                            <div class="checkbox m-t-xs m-b-none">
+                                <label class="i-checks w-sm" ng-repeat="jobBoonType in jobBoonTypes">
+                                    <input type="checkbox" checklist-model="c.boon"
+                                           checklist-value="jobBoonType.value">
+                                    <i></i>
+                                    {{jobBoonType.key}}
+                                </label>
+                            </div>
+                        </div>
+                        <div class="line b-b m-t-xs m-b-xs"></div>
+                        <div class="col-sm-1 w-xs l-h-2x">工资待遇：</div>
+                        <div class="col-sm-11">
+                            <input type="text" value="0" class="form-control input-sm w-sm pull-left">
+                            <span class="pull-left l-h-2x">&nbsp;至&nbsp;</span>
+                            <input type="text" value="0" class="form-control input-sm w-sm pull-left">
+                            <select name="account" class="form-control w-xs input-sm pull-left m-l-xs"
+                                    ng-model="salary1"
+                                    ng-options="type.value as type.key for type in salary1Types">
+                            </select>
+                            <button class="btn btn-default btn-sm pull-left m-l-xs">确定</button>
+                        </div>
+                    </div>
+                </div>
+                <div ng-show="licence == 'company'">
+                    <div class="col-sm-1 w-xs l-h-2x">公司类别：</div>
+                    <div class="col-sm-11 ">
+                        <a class="btn btn-sm" ng-class="{'btn-info':companyTypeClassShow[$index]}" ng-repeat="type in companyTypes"
+                           ng-click="setCCompanyType(type.value)">{{type.key}}</a>
+                    </div>
+                    <div ng-init="isCollapsed =true" collapse="isCollapsed">
+                        <div class="line b-b m-t-xs m-b-xs"></div>
+                        <div class="col-sm-1 w-xs l-h-2x">相关福利：</div>
+                        <div class="col-sm-11 ">
+                            <div class="checkbox m-t-xs m-b-none">
+                                <label class="i-checks w-sm" ng-repeat="jobBoonType in jobBoonTypes">
+                                    <input type="checkbox" checklist-model="c.boon"
+                                           checklist-value="jobBoonType.value">
+                                    <i></i>
+                                    {{jobBoonType.key}}
+                                </label>
+                            </div>
+                        </div>
+                        <div class="line b-b m-t-xs m-b-xs"></div>
+                        <div class="col-sm-1 w-xs l-h-2x">工资待遇：</div>
+                        <div class="col-sm-11">
+                            <input type="text" value="0" class="form-control input-sm w-sm pull-left">
+                            <span class="pull-left l-h-2x">&nbsp;至&nbsp;</span>
+                            <input type="text" value="0" class="form-control input-sm w-sm pull-left">
+                            <select name="account" class="form-control w-xs input-sm pull-left m-l-xs"
+                                    ng-model="salary1"
+                                    ng-options="type.value as type.key for type in salary1Types">
+                            </select>
+                            <button class="btn btn-default btn-sm pull-left m-l-xs">确定</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default m-b-xs">
+        <div class="panel-body ">
+            <div class="row m-t-xs" ng-repeat="item in data">
+                <div class="col-sm-9">
+                    <a class="thumb-md pull-left m-r" ng-click="goHomePage(item.inviterCId)">
+                        <button class="btn btn-rounded btn-hg btn-icon btn-info text-2x">{{item.firstWord}}</button>
+                    </a>
+                    <div class="clear">
+                        <div class="m-b-xs">
+                            <span class="text-lg text-info">{{item.workName}}</span>
+                            <small class="m-l-sm font-bold text-success">{{item.inviterOrgName}}</small>
+                        </div>
+                        <p class="m-b-xs">
+                            <span class="m-r-sm" ng-show="licence == 'person'">年龄范围：{{item.ageRequire}}</span>
+                            <span class="m-r-sm">工期：{{item.workTime}}</span>
+                            <span class="m-r-sm" ng-show="licence != 'company'">工作经验：{{item.workExpr}}</span>
+                            <span class="m-r-sm" ng-show="licence == 'person'">学历：{{item.edu}}</span>
+                            <span class="m-r-sm">相关福利：{{item.boon}}</span>
+                            <span class="m-r-sm" ng-show="licence != 'company'">招聘人数：{{item.inviteNum}}人</span>
+                        </p>
+                        <p>
+                            <span>地址：{{item.companyAddr}}</span>
+                            <small class="m-l-sm text-muted">发布时间：{{item.createTime}}</small>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="pull-right pull-none-xs text-center">
+                        <div class="m-b-xs">
+                            <span class="text-lg text-danger">{{item.salary}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix">
+                <button class="btn btn-default btn-sm w-full" type="button" ng-click="getMore()">加载更多</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Information Perfection -->

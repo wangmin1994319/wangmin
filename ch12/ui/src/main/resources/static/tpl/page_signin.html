@@ -1,0 +1,41 @@
+<div class="container w-xxl w-auto-xs" ng-controller="SigninFormController" ng-init="app.settings.container = false;">
+  <a href class="navbar-brand block m-t-lg m-b-md">
+    <img src="img/logo2.png" alt=".">
+    <span class="hidden-folded m-l-xs">{{app.name}}</span>
+  </a>
+  <div class="m-b-lg">
+    <div class="wrapper text-center">
+      <strong>请填写用户名与密码进行登录</strong>
+    </div>
+
+    <form name="form" class="form-validation" ng-submit="login(form.$valid)"  novalidate>
+      <!-- alert -->
+      <div>
+        <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+        <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+      </div>
+      <!-- / alert -->
+      <div class="list-group list-group-sm">
+        <div class="list-group-item">
+          <div class="input-group">
+            <span class="input-group-addon no-bg"><i class="icon-user"></i></span>
+            <input type="text" placeholder="身份证号/手机号/工信号" name="username" class="form-control " ng-model="user.username"   ng-pattern="/^(((13[0-9]|15[0-9]|17[0-9]|18[0-9]|14[0-9])[0-9]{8})|((^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)))|([U][0-9]{1,})$/" required>
+          </div>
+        </div>
+        <div class="list-group-item">
+          <div class="input-group">
+            <span class="input-group-addon no-bg"><i class="icon-lock"></i></span>
+            <input type="{{typeState}}" placeholder="请输入密码" name="password" class="form-control" ng-model="user.password">
+            <span class="input-group-addon no-bg" ng-click="hidePassword()"><i class="fa {{iconState}}"></i></span>
+          </div>
+        </div>
+      </div>
+      <div class="text-right m-t-sm m-b-sm"><a ui-sref="access.forgotpwd">忘记密码?</a></div>
+      <button type="submit" class="btn btn-lg btn-primary btn-block m-b-sm" >登录</button>
+      <a ui-sref="access.signup" class="btn btn-lg btn-default btn-block">快速注册</a>
+    </form>
+  </div>
+  <div class="text-center" ng-include="'tpl/blocks/page_footer.html'">
+    {% include 'blocks/page_footer.html' %}
+  </div>
+</div>

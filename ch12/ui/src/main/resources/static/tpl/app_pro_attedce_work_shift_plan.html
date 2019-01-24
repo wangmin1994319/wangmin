@@ -1,0 +1,41 @@
+<!-- breadcrumb -->
+<ul class="breadcrumb bg-white b-b wrapper-sm m-b-none">
+    <li><i class="fa fa-home"></i> 主页</li>
+    <li>考勤管理</li>
+    <li class="active">班次设置</li>
+</ul>
+<!-- / breadcrumb -->
+<!-- hbox layout -->
+
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-controller="workShiftPlanController">
+    <div>
+        <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+    </div>
+    <div class="wrapper-sm" >
+        <div class="panel panel-default">
+            <div class="row wrapper">
+                <div class="col-md-6 col-sm-5 col-lg-6">
+                    <button class="btn btn-default btn-addon pull-left" ng-click="openCreateDialog()"><i class="icon icon-users"></i>班次安排</button>
+                    <div class="checkbox m-l-sm m-b-none pull-left">
+                        <label class="i-checks w-xs">
+                            <input type="checkbox" checked>
+                            <i></i>
+                            过期不显示
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-7 col-lg-6">
+                    <select name="account" class="form-control w-md pull-right m-r-xs" ng-change="selectProjectOrg()" ng-model="myProjectOrg" ng-options="myProjectOrg.projectOrgName for myProjectOrg in myProjectOrgs">
+                    </select>
+                </div>
+            </div>
+            <div class="b-t">
+                <div class="table-responsive">
+                    <div ng-grid="gridOptions" style="min-height:680px"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- /hbox layout -->

@@ -1,0 +1,14 @@
+<div>
+    <div class="col-sm-3 col-md-3 col-lg-2">
+        <select ng-model="birthYear" class="form-control" ng-change="birthpickerchanged();"  ng-options="y as y for y in years">
+        </select>
+    </div>
+    <div class="col-sm-3 col-md-2 col-lg-2">
+        <select ng-model="birthMonth"  class="form-control" ng-change="birthpickerchanged();" ng-options="m as m for m in months">
+        </select>
+    </div>
+    <div class="col-sm-3 col-md-2 col-lg-2">
+        <select ng-model="birthDay" class="form-control" ng-change="birthpickerchanged();" ng-options="d for d in days" >
+        </select>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+<script type="text/ng-template" id="myModalContent.html">
+    <div ng-include="'tpl/zjgx_xgsjxx.html'"></div>
+</script>
+<!-- breadcrumb -->
+<ul class="breadcrumb bg-white b-b wrapper-sm m-b-none">
+    <li><i class="fa fa-home"></i> 主页</li>
+    <li>项目管理</li>
+    <li class="active">创建成功</li>
+</ul>
+<!-- / breadcrumb -->
+<!-- layout -->
+<div class="wrapper-sm" ng-controller="CreatePrjSuccessCtrl">
+    <div class="panel panel-default">
+        <div class="panel-heading">你的项目编号及总包工信号</div>
+        <div class="panel-body">
+
+            <div class="col-sm-2 col-md-3 col-lg-4"></div>
+            <div class="col-sm-8 col-md-6 col-lg-4">
+                <a href="" class="pull-left m-r text-4x text-success">
+                    <i class="icon icon-check m-r-sm"></i>
+                </a>
+                <div class="clear m-b">
+                    <div class="m-b m-t-sm">
+                        <span class="text-2x">项目创建成功</span>
+                    </div>
+                    <p class="m-b">
+                        <p class="text-lg">项目编号：<b class="text-success">{{projectConductssId}}</b></p>
+                        <p class="text-lg">总包工信号：<b class="text-success">{{projectOrgConductssId}}</b></p>
+                    </p>
+                    <a class="btn btn-lg btn-success m-t" ng-click="viewMyProjectOrg()">去查看</a>
+                </div>
+            </div>
+            <div class="col-sm-2 col-md-3 col-lg-3"></div>
+
+           <!-- <div class="text-center text-3x text-success m-b">
+                <span style="font-size:28px"></span>
+            </div>
+            <p class="text-center">
+            </p>-->
+        </div>
+    </div>
+</div>
+<!-- /layout -->

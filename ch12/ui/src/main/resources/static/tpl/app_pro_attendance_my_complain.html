@@ -1,0 +1,36 @@
+<!-- breadcrumb -->
+<ul class="breadcrumb bg-white b-b wrapper-sm m-b-none">
+    <li><i class="fa fa-home"></i> 主页</li>
+    <li>个人考勤</li>
+    <li class="active">我的申述</li>
+</ul>
+<!-- / breadcrumb -->
+<!-- hbox layout -->
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-controller="myApealController">
+    <div class="wrapper-sm" >
+        <div class="panel panel-default">
+            <div class="row wrapper">
+                <div class="col-md-7 col-sm-8 col-lg-8">
+                    <button class="btn btn-default" ng-click="reloadData()">刷新</button>
+                </div>
+                <div class="col-md-5 col-sm-4 col-lg-4">
+                    <div class="col-md-6">
+                        <select name="account" class="form-control w-md pull-right m-r-xs" ng-change="reloadData()" ng-model="myProjectOrg" ng-options="myProjectOrg.projectOrgName for myProjectOrg in myProjectOrgs">
+                        </select>
+                    </div>
+                    <select name="account" class="form-control w-sm inline v-middle pull-right m-r-xs" ng-change="showByStatus()" ng-model="status">
+                        <option value="2">全部</option>
+                        <option value="1">已处理</option>
+                        <option value="0">未处理</option>
+                    </select>
+                </div>
+            </div>
+            <div class="b-t">
+                <div class="table-responsive">
+                    <div ng-grid="gridOptions" style="min-height:680px"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /hbox layout -->

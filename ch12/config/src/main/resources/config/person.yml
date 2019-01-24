@@ -1,0 +1,22 @@
+logging:
+  level:
+    org.springframework.web: DEBUG
+    org.springframework.cloud.netflix.feign: DEBUG
+spring:
+   data:
+     mongodb:
+       uri: mongodb://user:user@192.168.56.2:27017/admin
+   jpa:
+        database: MYSQL
+        show-sql: true
+        hibernate:
+          ddl-auto: update
+        properties:
+          hibernate:
+            dialect: org.hibernate.dialect.MySQL5Dialect
+   datasource:
+        url: jdbc:mysql://192.168.56.2:3306/demo
+        username: root
+        password: root
+        driverClassName: com.mysql.jdbc.Driver
+        max-active: 2

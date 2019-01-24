@@ -1,0 +1,49 @@
+<div class="wrapper-xs" ng-controller="CompanyProjectSufferController">
+    <div class="panel panel-default">
+
+        <div class="row" ng-show="datas.length == 0">
+            <div class="text-center">
+                <div class="clear">
+                    <div class="text-3x text-muted">
+                        <i class="icon icon-doc"></i>
+                    </div>
+                    <p class="text-md" >
+                        你目前还没有项目经历
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="panel-body" ng-show="datas.length > 0">
+            <ul class="timeline">
+                <li class="tl-item tl-left" ng-repeat="data in datas">
+                    <div class="tl-wrap b-primary">
+                        <span class="tl-date">{{data.joinTime}}</span>
+
+                        <div class="tl-content panel padder b-a block">
+                            <span class="arrow left pull-up hidden-left"></span>
+                            <span class="arrow right pull-up visible-left"></span>
+
+                            <div class="text-lt m-b-sm text-info">{{data.orgName}}<span class="pull-right">我的成员人数：{{data.peopleNum}}</span>
+                            </div>
+                            <div class="panel-body pull-in b-t b-light">
+                                <div class="h4">项目概况</div>
+                                <div class="row">
+                                    <div class="col-sm-4 m-t-sm">工程地点：{{data.addr}}</div>
+                                    <div class="col-sm-4 m-t-sm">工地类型：{{data.buildType}}</div>
+                                    <div class="col-sm-4 m-t-sm">建筑面积：{{data.bulidArea}}万m<sup>2</sup></div>
+                                    <div class="col-sm-4 m-t-sm">开发公司：{{data.devCom}}</div>
+                                    <div class="col-sm-4 m-t-sm">总承包方：{{data.contractCom}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="tl-header">
+                    <button class="btn btn-sm btn-default btn-rounded" type="button" ng-click="getMore()" ng-show="showGetMore">更多</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

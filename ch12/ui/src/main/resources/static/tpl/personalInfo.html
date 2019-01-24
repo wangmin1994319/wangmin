@@ -1,0 +1,83 @@
+<div class="wrapper-xs" ng-controller="PersonalInfoController">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="col-sm-5 col-sm-offset-4">
+                <table class="table no-border">
+                    <tbody>
+
+                    <tr>
+                        <td width="35%">工信号：</td>
+                        <td>{{conductssId}}</td>
+                    </tr>
+                    <tr >
+                        <td>身份证号：</td>
+                        <td>{{cardId}}</td>
+                    </tr>
+
+                    <tr ng-if="null != cardChipId">
+                        <td>身份证姓名：</td>
+                        <td>{{realName}} <span class="badge bg-success rounded">身份已认证</span></td>
+                    </tr>
+                    <tr ng-if="null == cardChipId">
+                        <td>身份证姓名：</td>
+                        <td>{{realName}} <span class="badge bg-error rounded">身份未认证</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>我的手机号：</td>
+                        <td>{{phoneNum}}</td>
+                    </tr>
+                    <tr>
+                        <td>出生日期：</td>
+                        <td>{{sysUserInfo.birthday}}</td>
+                    </tr>
+                    <tr>
+                        <td>性别：</td>
+                        <td>{{sysUserInfo.sex}}</td>
+                    </tr>
+                    <tr>
+                        <td>民族：</td>
+                        <td>{{nation}}</td>
+                    </tr>
+                    <tr>
+                        <td>紧急联系人：</td>
+                        <td>{{sysUserInfo.emgPerson}}</td>
+                    </tr>
+                    <tr>
+                        <td>紧急联系电话：</td>
+                        <td>{{sysUserInfo.emgContact}}</td>
+                    </tr>
+                    <tr>
+                        <td>户籍地址：</td>
+                        <td>{{sysUserInfo.registerAddr}}</td>
+                    </tr>
+                    <tr>
+                        <td>现居住地址：</td>
+                        <td>{{sysUserInfo.addr}}</td>
+                    </tr>
+                    <tr>
+                        <td>我的技能：</td>
+                        <td>
+                            <div class="m-b">
+                                <div class="btn-group dropdown">
+                                    <button class="btn btn-default btn-sm" data-toggle="dropdown"><i class="icon icon-question"></i> 技能说明 <span class="caret"></span></button>
+                                    <ul class="dropdown-menu wrapper-sm">
+                                        <li class="text-xs l-h-2x"><span class="badge bg-success">&nbsp;</span> <span>已上传操作证</span></li>
+                                        <li class="text-xs l-h-2x"><span class="badge bg-dark">&nbsp;</span> <span>未上传操作证</span></li>
+                                        <li class="text-xs l-h-2x"><span class="badge bg-primary">&nbsp;</span> <span>该工种不需要操作证</span></li>
+                                        <li class="text-xs l-h-2x"><span class="badge bg-info">&nbsp;</span> <span>自定义工种</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="label bg-success w-xs m-r-xs m-b-xs pull-left" ng-repeat="type in workerTypesAuthed">{{type}}</div>
+                            <div class="label bg-dark w-xs m-r-xs m-b-xs pull-left" ng-repeat="type in workerTypesNoAuthed">{{type}}</div>
+                            <div class="label bg-primary w-xs m-r-xs m-b-xs pull-left" ng-repeat="type in workerTypesNoNeedAuth">{{type}}</div>
+                            <div class="label bg-info w-xs m-r-xs m-b-xs pull-left" ng-repeat="type in selfDefWorkerTypes">{{type}}</div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

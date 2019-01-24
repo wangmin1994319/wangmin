@@ -1,0 +1,30 @@
+<!-- breadcrumb -->
+<ul class="breadcrumb bg-white b-b wrapper-sm m-b-none">
+    <li><i class="fa fa-home"></i> 主页</li>
+    <li>考勤管理</li>
+    <li class="active">班次设置</li>
+</ul>
+<!-- / breadcrumb -->
+<!-- hbox layout -->
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-controller="orgWorkShiftSettingController">
+    <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+    <div>
+        <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+    </div>
+    <div class="wrapper-sm" >
+        <div class="panel panel-default">
+            <div class="row wrapper">
+                <div class="col-md-12">
+                    <select name="account" class="form-control w-lg m-r-xs" ng-change="getPagedDataAsync(pagingOptions.pageSize,1,'')" ng-model="socialOrg" ng-options="socialOrg.orgName for socialOrg in socialOrgs">
+                    </select>
+                </div>
+            </div>
+            <div class="b-t">
+                <div class="table-responsive">
+                    <div ng-grid="gridOptions" style="min-height:680px"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /hbox layout -->

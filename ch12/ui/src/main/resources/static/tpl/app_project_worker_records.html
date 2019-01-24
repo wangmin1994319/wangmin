@@ -1,0 +1,95 @@
+<!-- breadcrumb -->
+<ul class="breadcrumb bg-white b-b wrapper-sm m-b-none">
+    <li><i class="fa fa-home"></i> 主页</li>
+    <li>项目考勤</li>
+    <li class="active">考勤记录</li>
+</ul>
+<div class="wrapper-xs">
+    <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div ng-app="demo" ng-cloak>
+
+                <div class="row" ng-controller="attdWorkerRecordController as vm" id="demo">
+
+                    <div class="col-md-12">
+
+                        <div class="h2 text-center m-b-sm">
+                        </div>
+
+                        <div class="row m-b-sm">
+
+                            <div class="col-sm-4 col-md-4">
+                                <div class="btn-group">
+                                    <button
+                                            class="btn btn-default"
+                                            mwl-date-modifier
+                                            date="vm.calendarDay"
+                                            decrement="vm.calendarView" ng-click="getAttdRecords()">
+                                        上月
+                                    </button>
+                                    <button
+                                            class="btn btn-primary"
+                                            mwl-date-modifier
+                                            date="vm.calendarDay"
+                                            set-to-today ng-click="getAttdRecords()">
+                                        今天
+                                    </button>
+                                    <button
+                                            class="btn btn-default"
+                                            mwl-date-modifier
+                                            date="vm.calendarDay"
+                                            increment="vm.calendarView" ng-click="getAttdRecords()">
+                                        下月
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row m-b-sm">
+                            <div class="col-md-12">
+                                <table class="table table-bordered m-b-none">
+                                    <thead>
+                                    <tr>
+                                        <th>出勤日(天)</th>
+                                        <th>总工时(时)</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="text-danger">{{attdSta.attdDays}}</td>
+                                        <td class="text-danger">{{attdSta.attdHours}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <mwl-calendar
+                                tips="vm.tips"
+                                events="vm.events"
+                                view="vm.calendarView"
+                                view-title="vm.calendarTitle"
+                                current-day="vm.calendarDay"
+                                on-event-click="vm.eventClicked(calendarEvent)"
+                                on-event-times-changed="vm.eventTimesChanged(calendarEvent); calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd"
+                                edit-event-html="'<button class=\'btn btn-info btn-xs\'>申诉</button>'"
+                                on-edit-event-click="vm.eventEdited(calendarEvent)"
+                                on-delete-event-click="vm.eventDeleted(calendarEvent)"
+                                cell-is-open="vm.isCellOpen"
+                                day-view-start="06:00"
+                                day-view-end="22:00"
+                                day-view-split="30"
+                                cell-modifier="vm.modifyCell(calendarCell)"
+                                on-timespan-click="vm.cellClicked(calendarDate)">
+                        </mwl-calendar>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

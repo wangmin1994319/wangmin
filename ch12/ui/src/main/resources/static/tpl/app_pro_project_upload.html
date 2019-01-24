@@ -1,0 +1,58 @@
+<script type="text/ng-template" id="myModalContent.html">
+    <div ng-include="'tpl/zjgx_xgsjxx.html'"></div>
+</script>
+<!-- breadcrumb -->
+<ul class="breadcrumb bg-white b-b wrapper-sm m-b-none">
+    <li><i class="fa fa-home"></i> 主页</li>
+    <li>我的项目部信息</li>
+</ul>
+<!-- / breadcrumb -->
+<!-- layout -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<div class="wrapper-sm" ng-controller="PrjUploadCtrl">
+    <div class="panel panel-default">
+        <div class="panel-heading font-bold">请完善项目认证资料</div>
+        <div class="panel-body">
+            <form class="form-horizontal" method="get">
+                <div class="form-group">
+                    <div class="col-sm-12 col-md-9 col-lg-7 col-md-offset-1 col-lg-offset-2">
+                        <h4><b>施工许可证</b></h4>
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-3 col-lg-3 control-label">施工许可证副本：</label>
+                    <div class="col-sm-9 col-md-7 col-lg-6">
+                        <image-upload  targeturi="'projectOrgs/upload/G'+projectId+'/project_construct'"  on-change="pop(type,title,text)"></image-upload>
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <div class="col-sm-12 col-md-9 col-lg-7 col-md-offset-1 col-lg-offset-2">
+                        <h4><b>立项审批</b></h4>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-3 col-lg-3 control-label">立项审批副本：</label>
+                    <div class="col-sm-9 col-md-7 col-lg-6">
+                        <image-upload  targeturi="'projectOrgs/upload/G'+projectId+'/project_setUp'"  on-change="pop(type,title,text)"></image-upload>
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <div class="col-sm-12 col-md-9 col-lg-7 col-md-offset-1 col-lg-offset-2">
+                        <h4><b>消防报审</b></h4>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-3 col-lg-u3 control-label">消防报审副本：</label>
+                    <div class="col-sm-9 col-md-7 col-lg-6">
+                        <image-upload  targeturi="'projectOrgs/upload/G'+projectId+'/project_fireControl'"  on-change="pop(type,title,text)"></image-upload>
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- /layout -->

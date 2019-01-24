@@ -1,0 +1,17 @@
+<!-- breadcrumb -->
+<ul class="breadcrumb bg-white b-b wrapper-sm m-b-none">
+    <li><i class="fa fa-home"></i> 主页</li>
+    <li>消息提醒</li>
+</ul>
+<!-- / breadcrumb -->
+<!-- hbox layout -->
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-controller="messageController">
+    <div class="wrapper-xs padder bg-white b-b">
+        <ul class="nav nav-pills nav-sm">
+            <li ng-class="{'active':clickIndex == 0}" ng-click="setClickIndex(0)"><a ng-click="gotoPage('app.tips.suspendingMsg')">待处理消息<span class="m-l-sm avatar" style="position: static" ng-if="hasTasks"><i class="busy b-white right"></i></span></a></li>
+            <li ng-class="{'active':clickIndex == 1}" ng-click="setClickIndex(1)"><a ng-click="gotoPage('app.tips.noticeMsg')">通知消息</a></li>
+        </ul>
+    </div>
+    <ui-view></ui-view>
+</div>
+<!-- /hbox layout -->

@@ -1,0 +1,55 @@
+<div class="container w-xl w-auto-xs" ng-init="app.settings.container = false;">
+    <a href class="navbar-brand block m-t-lg m-b-md">
+        <img src="img/logo2.png" alt=".">
+        <span class="hidden-folded m-l-xs">{{app.name}}</span>
+    </a>
+    <div class="m-b-lg" ng-controller="forgotPwdController">
+        <div class="wrapper text-center" >
+            <strong>忘记密码</strong>
+        </div>
+        <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+        <form name="form1"  class="form-validation" ng-init="isCollapsed=true" novalidate ng-show="step==1">
+            <div class="list-group list-group-sm">
+                <div class="list-group-item">
+                    <input type="text" placeholder="请输入身份证号码"  class="form-control" ng-model="cardId" ng-pattern="/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/" required/>
+                </div>
+            </div>
+            <button  class="btn btn-lg btn-success btn-block" type="button"  ng-click="next1()" ng-disabled='form1.$invalid'>下一步</button>
+        </form>
+        <!---->
+        <form name="form2"  class="form-validation" ng-init="isCollapsed=true" novalidate ng-show="step==2">
+            <div class="list-group list-group-sm">
+                向 {{showNum}} 发送验证码
+            </div>
+            <div class="list-group list-group-sm">
+                <div class="input-group">
+                        <input type="text" placeholder="请输入短信验证码" class="form-control" ng-model="code" ng-pattern="/^[0-9]{4}$/" ng-blur="verifyCode()" required />
+                        <span class="input-group-addon no-border no-bg">
+                            <button class='btn btn-info btn-xs' ng-click='sendCode()'> <timer interval='1000' countdown='90' autostart='false' ng-show='startCountdown'>{{countdown}}</timer>{{showmsg}}</button>
+                        </span>
+                </div>
+                <div class="text-xs m-l-sm">{{sendState}}</div>
+            </div>
+            <div class="text-center m-t-md">
+                <p><a class="text-info" ng-click="open()">手机收不到短信验证码？</a></p>
+            </div>
+                <!--<p ng-controller="phoneTips"><a href="#" class="text-info" ng-click="open('')">手机收不到短信验证码？</a></p>-->
+            <button class="btn btn-lg btn-success btn-block" type="button"  ng-click="next2()" ng-disabled='form2.$invalid'>下一步</button>
+        </form>
+        <!-- -->
+        <form name="form3"  class="form-validation" ng-init="isCollapsed=true" novalidate ng-show="step==3">
+            <div class="list-group-item">
+                <input type="password" placeholder="请输入密码" class="form-control" ng-model="newPassword" ng-pattern="/^[a-zA-Z0-9]{6,20}$/" tooltip="长度6-20位、支持数字和字母(区分大小写)、不允许空格"  tooltip-trigger="focus" tooltip-placement="top"
+                       required>
+            </div>
+            <div class="list-group-item">
+                <input type="password" placeholder="请再次输入密码" class="form-control" ng-model="confirmPassword" ui-validate=" '$value==newPassword' " ui-validate-watch=" 'newPassword' "
+                       required>
+            </div>
+            <button type="submit" class="btn btn-lg btn-success btn-block" ng-click="save()"  ng-disabled='form3.$invalid'>完成</button>
+        </form>
+    </div>
+    <div class="text-center" ng-include="'tpl/blocks/page_footer.html'">
+        {% include 'blocks/page_footer.html' %}
+    </div>
+</div>

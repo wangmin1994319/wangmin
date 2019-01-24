@@ -1,0 +1,118 @@
+<!-- breadcrumb -->
+<ul class="breadcrumb bg-white b-b wrapper-sm m-b-none">
+    <li><i class="fa fa-home"></i> 主页</li>
+    <li>组织考勤</li>
+    <li class="active">考勤记录</li>
+</ul>
+<div class="wrapper-xs">
+    <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div ng-app="demo" ng-cloak>
+
+                <div class="row" ng-controller="orgAttdRecordController as vm" id="demo">
+
+                    <div class="col-md-12">
+
+                        <div class="h2 text-center m-b-sm">
+
+                            <div class="col-xs-7 col-xs-offset-3 col-sm-6 col-sm-offset-5 m-b-sm">
+                                <div class="form-group">
+                                    <select ng-model="year" class="form-control w-xs pull-left m-r-sm" ng-change="changeDate();"  ng-options="y for y in years">
+                                    </select>
+                                    <select ng-model="month"  class="form-control w-xs pull-left" ng-change="changeDate();" ng-options="m for m in months">
+                                    </select>
+                                </div>
+
+                            </div>
+
+
+
+                        </div>
+
+                        <div class="row m-b-sm">
+
+                            <div class="col-sm-5 col-md-6">
+                                <div class="btn-group">
+                                    <button
+                                            class="btn btn-default"
+                                            mwl-date-modifier
+                                            date="vm.calendarDay"
+                                            decrement="vm.calendarView" ng-click="getAttdRecords()">
+                                        上月
+                                    </button>
+                                    <button
+                                            class="btn btn-primary"
+                                            mwl-date-modifier
+                                            date="vm.calendarDay"
+                                            set-to-today ng-click="getAttdRecords()">
+                                        今天
+                                    </button>
+                                    <button
+                                            class="btn btn-default"
+                                            mwl-date-modifier
+                                            date="vm.calendarDay"
+                                            increment="vm.calendarView" ng-click="getAttdRecords()">
+                                        下月
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-sm-7 col-md-6">
+                                <select name="account" class="form-control w-md pull-right m-r-xs" ng-change="getAttdRecords()" ng-model="socialOrg" ng-options="socialOrg.orgName for socialOrg in socialOrgs">
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row m-b-sm">
+                            <div class="col-md-12">
+                                <table class="table table-bordered m-b-none">
+                                    <thead>
+                                    <tr>
+                                        <th>正常(次)</th>
+                                        <th>迟到(次)</th>
+                                        <th>早退(次)</th>
+                                        <th>错误(次)</th>
+                                        <th>工时(小时)</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="text-danger">{{attdSituations.normalTimes}}/{{attdSituations.modifyNormalTimes}}</td>
+                                        <td class="text-danger">{{attdSituations.lateTimes}}/{{attdSituations.modifyLateTimes}}</td>
+                                        <td class="text-danger">{{attdSituations.leaveEarlyTimes}}/{{attdSituations.modifyLeaveEarlyTimes}}</td>
+                                        <td class="text-danger">{{attdSituations.missTimes}}/{{attdSituations.modifyMissTimes}}</td>
+                                        <td class="text-danger">{{attdSituations.workingHours}}/{{attdSituations.modifyWorkingHours}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <mwl-calendar
+                                tips="vm.tips"
+                                events="vm.events"
+                                view="vm.calendarView"
+                                view-title="vm.calendarTitle"
+                                current-day="vm.calendarDay"
+                                on-event-click="vm.eventClicked(calendarEvent)"
+                                on-event-times-changed="vm.eventTimesChanged(calendarEvent); calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd"
+                                edit-event-html="'<button class=\'btn btn-info btn-xs\'>申诉</button>'"
+                                on-edit-event-click="vm.eventEdited(calendarEvent)"
+                                on-delete-event-click="vm.eventDeleted(calendarEvent)"
+                                cell-is-open="vm.isCellOpen"
+                                day-view-start="06:00"
+                                day-view-end="22:00"
+                                day-view-split="30"
+                                cell-modifier="vm.modifyCell(calendarCell)"
+                                on-timespan-click="vm.cellClicked(calendarDate)">
+                        </mwl-calendar>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

@@ -1,0 +1,58 @@
+<!-- breadcrumb -->
+<ul class="breadcrumb bg-white b-b wrapper-sm m-b-none">
+  <li><i class="fa fa-home"></i> 主页</li>
+  <li class="active">申请加入</li>
+</ul>
+        <!-- / breadcrumb -->
+        <!-- hbox layout -->
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-controller="orgApplyController">
+<div class="wrapper-md">
+  <div class="col-md-1 col-lg-2"></div>
+  <div  class="col-md-10 col-lg-8">
+    <form class="m-b-md">
+      <div class="input-group">
+        <input type="text" class="form-control input-lg" placeholder="请输入项目编号" ng-model="conductssNumber">
+            <span class="input-group-btn">
+                <button class="btn btn-lg btn-default" type="button" ng-click="search()">查找</button>
+            </span>
+      </div>
+    </form>
+    <!-- alert -->
+    <div>
+      <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+    </div>
+    <!-- / alert -->
+    <div class="panel panel-default" ng-repeat="item in resultsItems">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-xs-8 col-sm-8 col-md-7 col-lg-7">
+            <a href="" class="pull-left m-r">
+              <button class="btn btn-rounded btn-hg btn-icon btn-info text-2x" ng-bind="item.fName"></button>
+            </a>
+            <div class="clear">
+              <div class="m-b-sm m-t-xs">
+                <span class="h3 text-black" ng-bind="item.name"></span>
+              </div>
+              <p>
+                <small class="m-r">项目编号：{{conductssNumber}}</small> <small class="m-r">项目管理员：{{item.pmName}}</small> <small>总包名称：{{item.contractorName}}</small>
+              </p>
+            </div>
+          </div>
+          <div class="col-xs-4 col-sm-4 col-md-5 col-lg-5">
+            <div class="pull-right text-center">
+              <!--<button class="btn btn-default" ng-bind="item.title" ng-click="gotoHomePage(item)"ng-if="isCompany">公司主页</button>
+              <button class="btn btn-default" ng-bind="item.title" ng-click="gotoHomePage(item)" ng-if="!isCompany">个人主页</button>-->
+              <button class="btn btn-success" ng-click="join(item)" ng-show="apply">申请加入</button>
+              <!--<button class="btn btn-success" ng-click="invite(item)" ng-show="invite">邀请加入</button>-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-1 col-lg-1"></div>
+</div>
+</div>
+
+
+        <!-- /hbox layout -->

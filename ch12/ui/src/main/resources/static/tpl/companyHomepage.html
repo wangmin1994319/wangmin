@@ -1,0 +1,34 @@
+<div class="hbox hbox-auto-xs hbox-auto-sm ng-scope" ng-controller="CompanyHomepageController">
+    <div style="background:url(img/c4.jpg) center center; background-size:cover">
+        <div class="wrapper-xs padder bg-white-opacity">
+            <div class="row m-t-sm">
+                <div class="col-sm-7">
+                    <a href="" class="thumb-lg pull-left m-r">
+                        <img src={{headerImgUrl}} class="img-circle">
+                    </a>
+                    <div class="clear m-b-sm">
+                        <div class="m-b-sm m-t-sm">
+                            <span class="h3 text-black">{{name}}</span>
+                            <small class="m-l">工信号:{{conductssId}}</small>
+                        </div>
+                        <button class="btn btn-xs btn-failed btn-rounded"><i class=""></i>企业未认证</button>
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <div class="pull-right pull-none-xs text-center">
+                        <button class="btn btn-default btn-sm" ng-show="editSelf" ng-click="goEditSelf()"><i class="icon icon-note"></i> 编辑</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper-xs padder bg-white b-b">
+        <ul class="nav nav-pills nav-sm">
+            <li ng-class="{'active':clickIndex == 0}" ng-click="setClickIndex(0)"><a ui-sref="app.companyHomepage.companyInfo">公司信息</a></li>
+            <li ng-class="{'active':clickIndex == 1}" ng-click="setClickIndex(1)"><a ui-sref="app.companyHomepage.companyProjectSuffer">项目经历</a></li>
+            <li ng-class="{'active':clickIndex == 2}" ng-click="setClickIndex(2)"><a ui-sref="app.companyHomepage.companyCommentEval">评价留言</a></li>
+            <li ng-class="{'active':clickIndex == 3}" ng-click="setClickIndex(3)"><a ui-sref="app.companyHomepage.companyEventEval">恶性重大事件评价</a></li>
+        </ul>
+    </div>
+    <ui-view></ui-view>
+</div>

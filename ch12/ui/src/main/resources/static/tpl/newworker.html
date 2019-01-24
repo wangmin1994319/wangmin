@@ -1,0 +1,119 @@
+
+
+
+<!-- title -->
+<div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3">基本信息</h1>
+</div>
+
+
+<!-- Information Perfection -->
+<div class="wrapper-md" ng-controller="PerinfoController">
+
+<!-- alert -->
+<div>
+    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+</div>
+<!-- / alert -->
+    <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+
+    <div class="panel panel-default">
+        <div class="panel-heading font-bold">请完善基本资料</div>
+        <div class="panel-body">
+            <form class="form-horizontal form-validation" method="get" name="form">
+                <div class="wrapper-md">
+
+
+                    <div class="form-group">
+                        <label class="col-sm-3 col-md-3 col-lg-3 control-label">用户名：</label>
+                        <div class="col-sm-9 col-md-7 col-lg-6">
+                            <input type="text" class="form-control" ng-model="sysUserMessage.userName"  >
+                        </div>
+                    </div>
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 col-md-3 col-lg-3 control-label">身份证姓名：</label>
+                        <div class="col-sm-9 col-md-7 col-lg-6">
+                            <input type="text" class="form-control" ng-model="sysUserMessage.userName" ng-maxLength="20" ng-pattern="/^[\u4e00-\u9fa5][\u4e00-\u9fa5·]{0,}$/" ng-disabled="sysUserMessage.isCertified" required>
+                        </div>
+                    </div>
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 col-md-3 col-lg-3 control-label">身份证号：</label>
+                        <div class="col-sm-9 col-md-7 col-lg-6">
+                            <input type="text" class="form-control" ng-model="sysUserMessage.cardId" ng-pattern="/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/" ng-disabled="sysUserMessage.isCertified" required>
+                        </div>
+                    </div>
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 col-md-3 col-lg-3 control-label">性别：</label>
+                        <div class="col-sm-9 col-md-7 col-lg-6">
+                            <div class="radio">
+                                <label class="i-checks i-checks-md">
+                                    <input type="radio" name="a" ng-model="sysUserMessage.sex" value="1" ng-disabled="sysUserMessage.isCertified">
+                                    <i></i>
+                                    男
+                                </label>
+                                <label class="i-checks i-checks-md">
+                                    <input type="radio" name="a" ng-model="sysUserMessage.sex" value="0" ng-disabled="sysUserMessage.isCertified">
+                                    <i></i>
+                                    女
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 col-md-3 col-lg-3 control-label">民族：</label>
+                        <div class="col-sm-9 col-md-7 col-lg-6">
+                            <nation-picker nation="sysUserMessage.nation" ng-disabled="sysUserMessage.isCertified"></nation-picker>
+                        </div>
+                    </div>
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 col-md-3 col-lg-3 control-label">紧急联系人：</label>
+                        <div class="col-sm-9 col-md-7 col-lg-6">
+                            <input type="text" class="form-control" ng-model="sysUserMessage.emgPerson" ng-maxLength="20" ng-pattern="/^[\u4e00-\u9fa5][\u4e00-\u9fa5·]{0,}$/">
+                            <div class="alert alert-danger" ng-show="sysUserMessage.emgPerson.$error.pattern">
+                                紧急联系人姓名 必须为汉字
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 col-md-3 col-lg-3 control-label">紧急联系电话：</label>
+                        <div class="col-sm-9 col-md-7 col-lg-6">
+                            <input type="text" class="form-control" ng-model="sysUserMessage.emgContact" ng-pattern="/^(13[0-9]|15[0-9]|17[0-9]|18[0-9]|14[0-9])[0-9]{8}$/">
+                            <div class="alert alert-danger" ng-show="sysUserMessage.emgContact.$error.pattern">
+                                电话号码格式不正确
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 col-md-3 col-lg-3 control-label">现居住地址：</label>
+                        <div class="col-sm-9 col-md-7 col-lg-6">
+                            <input type="text" class="form-control" ng-model="sysUserMessage.addr" >
+                        </div>
+                    </div>
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 col-md-3 col-lg-3 control-label">出生日期：</label>
+                        <p class="form-control-static" ng-bind="sysUserMessage.birthday" ng-show="sysUserMessage.isCertified"> </p>
+                        <div birth-day-picker birthday="sysUser.birthday" ng-hide="sysUserMessage.isCertified"></div>
+                    </div>
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <div class="col-sm-10 col-sm-offset-3 col-md-8 col-md-offset-3">
+                        <button type="submit" class="btn btn-success"  ng-click="saveData()" ng-disabled='form.$invalid'>保存资料</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,98 @@
+<div class="hbox hbox-auto-xs hbox-auto-sm ng-scope" ng-controller="ProjectHomepageController">
+    <div style="background:url(img/c4.jpg) center center; background-size:cover">
+        <div class="wrapper-xs padder bg-white-opacity">
+            <div class="row m-t-sm">
+                <div class="col-sm-7">
+                    <div class="clear m-b-sm">
+                        <div class="m-b-sm m-t-sm">
+                            <span class="h3 text-black">{{data.name}}</span>
+                            <small class="m-l">工信号:{{data.conductssId}}</small>
+                        </div>
+                        <button class="btn btn-xs btn-failed btn-rounded"><i class=""></i>项目未认证</button>
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <div class="pull-right pull-none-xs text-center">
+                        <button class="btn btn-default btn-sm" ng-click="goEditSelf()"><i class="icon icon-note"></i> 编辑</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper-xs">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="col-sm-5 col-sm-offset-4">
+                    <table class="table no-border">
+                        <tbody>
+                        <tr>
+                            <td width="35%">项目部名称：</td>
+                            <td>{{data.name}}</td>
+                        </tr>
+                        <tr>
+                            <td>工程地点：</td>
+                            <td>{{data.projectDto.addr}}</td>
+                        </tr>
+                        <tr>
+                            <td>工地类型：</td>
+                            <td>{{data.projectDto.buildTypeName}}</td>
+                        </tr>
+                        <tr>
+                            <td>结构类型：</td>
+                            <td>{{data.projectDto.structTypeName}}</td>
+                        </tr>
+                        <tr>
+                            <td>建筑面积：</td>
+                            <td>{{data.projectDto.bulidArea}}万m<sup>2</sup></td>
+                        </tr>
+                        <tr>
+                            <td>地上面积：</td>
+                            <td>{{data.projectDto.agroundArea}}万m<sup>2</sup></td>
+                        </tr>
+                        <tr>
+                            <td>地下面积：</td>
+                            <td>{{data.projectDto.undergroundArea}}万m<sup>2</sup></td>
+                        </tr>
+                        <tr>
+                            <td>占地面积：</td>
+                            <td>{{data.projectDto.floorArea}}万m<sup>2</sup></td>
+                        </tr>
+                        <tr>
+                            <td>工程总额：</td>
+                            <td>{{data.projectDto.spend}}万元</td>
+                        </tr>
+                        <tr>
+                            <td>开工日期：</td>
+                            <td>{{data.projectDto.startDate}}</td>
+                        </tr>
+                        <tr>
+                            <td>项目经理：</td>
+                            <td>{{data.pmName}}</td>
+                        </tr>
+                        <tr>
+                            <td>监理单位：</td>
+                            <td>{{data.projectDto.supervisorCom}}</td>
+                        </tr>
+                        <tr>
+                            <td>开发公司：</td>
+                            <td>{{data.projectDto.devCom}}</td>
+                        </tr>
+                        <tr>
+                            <td>总承包方：</td>
+                            <td>{{data.projectDto.contractCom}}</td>
+                        </tr>
+                        <tr>
+                            <td>证书：</td>
+                            <td>
+                                <span class="label bg-primary rounded" ng-show="project_construct">施工许可证</span>
+                                <span class="label bg-primary rounded" ng-show="project_setUp">立项审批</span>
+                                <span class="label bg-primary rounded" ng-show="project_fireControl">消防报警</span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

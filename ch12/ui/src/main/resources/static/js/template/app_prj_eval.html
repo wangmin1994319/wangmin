@@ -1,0 +1,164 @@
+<div class="modal-body">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="cancel()"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title">评价</h3>
+    </div>
+    <tabset class="tab-container">
+        <tab>
+            <tab-heading>恶性重大事件</tab-heading>
+                <form name="form" class="form-horizontal form-validation" ng-controller="EventEvalController">
+                    <div>
+                        <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">评价人身份：</label>
+                        <div class="col-sm-9">
+                            <div class="radio">
+                                <label class="i-checks i-checks-md" ng-repeat="type in commentorTypes">
+                                    <input type="radio" name="a" value={{type.key}} ng-model="eval.commentorType" ng-checked="true">
+                                    <i></i>
+                                    {{type.value}}&nbsp&nbsp
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">事件类型：</label>
+                        <div class="col-sm-9">
+                            <div class="radio">
+                                <label class="i-checks i-checks-md" ng-repeat="type in eventTypes">
+                                    <input type="radio" name="b" value={{type.key}} ng-model="eval.eventType" ng-checked="true">
+                                    <i></i>
+                                    {{type.value}}&nbsp&nbsp
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">发生时间：</label>
+                        <div class="col-sm-9" ng-controller="DatepickerCtrl">
+                            <div class="input-group">
+                                <input type="text" class="form-control" readonly="readonly" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" ng-change="sendDate()" datepicker-options="dateOptions"/>
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">发生地点：</label>
+                        <nation-area-picker-b region="eval.addr"></nation-area-picker-b>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">详细地点：</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" ng-model="eval.detailAddr" placeholder="请输入详细地点" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                          <label class="col-sm-3 control-label">详细内容：</label>
+                          <div class="col-sm-9">
+                              <textarea class="form-control" rows="5" ng-model="eval.detailComment" placeholder="" required></textarea>
+                          </div>
+                    </div>
+                    <div class="modal-footer" >
+                        <button class="btn btn-success" ng-click="ok()" ng-disabled='form.$invalid'  ng-show="!evalShowUploadImage">提交</button>
+                    </div>
+                    <div class="form-group"  ng-show="evalShowUploadImage">
+                        <label class="col-sm-15 control-label">评价成功，可以为该评价上传最多5张照片。</label>
+                        <div class="col-sm-15"  ng-show="evalShowUploadImage">
+                            <image-upload  targeturi="'upload/'+evalConductssId+'/big_event0'"  on-change="pop(type,title,text)"></image-upload>
+                            <image-upload  targeturi="'upload/'+evalConductssId+'/big_event1'"  on-change="pop(type,title,text)"></image-upload>
+                            <image-upload  targeturi="'upload/'+evalConductssId+'/big_event2'"  on-change="pop(type,title,text)"></image-upload>
+                            <image-upload  targeturi="'upload/'+evalConductssId+'/big_event3'"  on-change="pop(type,title,text)"></image-upload>
+                            <image-upload  targeturi="'upload/'+evalConductssId+'/big_event4'"  on-change="pop(type,title,text)"></image-upload>
+                        </div>
+                    </div>
+                </form>
+        </tab>
+        <tab>
+            <tab-heading>评价留言</tab-heading>
+            <form name="form" class="form-horizontal form-validation" ng-controller="MsgEvalController">
+                <div>
+                    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">评价人身份：</label>
+                    <div class="col-sm-9">
+                        <div class="radio">
+                            <label class="i-checks i-checks-md" ng-repeat="type in commentorTypes">
+                                <input type="radio" name="a" value={{type.key}} ng-model="eval.commentorType" ng-checked="true">
+                                <i></i>
+                                {{type.value}}&nbsp&nbsp
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">请为他打星：</label>
+                    <div class="col-sm-9" >
+                        <div class="row">
+                            <label class="col-sm-3">技术实力：</label>
+                            <div class="col-sm-9" ng-controller="RatingCtrl">
+                                <span hidden="true">{{data.type = 0}}</span>
+                                <rating ng-model="rate" max="max"  readonly="isReadonly" on-hover="hoveringOver(value)"
+                                        on-leave="overStar = null" ng-click="sendTS()"></rating>
+                                <span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 &&percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}分</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-sm-3">责任心：</label>
+                            <div class="col-sm-9" ng-controller="RatingCtrl">
+                                <span hidden="true">{{data.type = 1}}</span>
+                                <rating ng-model="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)"
+                                        on-leave="overStar = null" ng-click="sendTS()"></rating>
+                                <span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 &&percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}分</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-sm-3">劳动纪律：</label>
+                            <div class="col-sm-9"ng-controller="RatingCtrl">
+                                <span hidden="true">{{data.type = 2}}</span>
+                                <rating ng-model="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)"
+                                        on-leave="overStar = null" ng-click="sendTS()"></rating>
+                                <span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 &&percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}分</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-sm-3">安全意识：</label>
+                            <div class="col-sm-9" ng-controller="RatingCtrl">
+                                <span hidden="true">{{data.type = 3}}</span>
+                                <rating ng-model="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)"
+                                        on-leave="overStar = null" ng-click="sendTS()"></rating>
+                                <span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 &&percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}分</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-sm-3">勤奋度：</label>
+                            <div class="col-sm-9" ng-controller="RatingCtrl">
+                                <span hidden="true">{{data.type = 4}}</span>
+                                <rating ng-model="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)"
+                                        on-leave="overStar = null" ng-click="sendTS()"></rating>
+                                <span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 &&percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}分</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="form-group">
+                    <label class="col-sm-3 control-label">上传图片：</label>
+                    <div class="col-sm-9">
+                    </div>
+                </div>-->
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">详细内容：</label>
+                    <div class="col-sm-9">
+                        <textarea class="form-control" rows="5" ng-model="eval.detailComment" placeholder="" required></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer" ng-show="showOKButton">
+                    <button class="btn btn-success" ng-click="ok()" ng-disabled='form.$invalid'>提交</button>
+                </div>
+            </form>
+        </tab>
+    </tabset>
+</div>

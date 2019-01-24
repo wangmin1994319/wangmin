@@ -1,0 +1,165 @@
+<div class="wrapper-xs" ng-controller="PersonalCommentEvalController">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-4">技术实力：
+                      <span>
+                          <rating ng-model="avgScore.techScore" max=5 readonly="true"></rating>
+                      </span>
+                    <div class="btn-group dropdown">
+                        <button class="btn btn-info btn-xs" data-toggle="dropdown">平均：{{avgScore.techScore | number:2}}分 <span class="caret"></span></button>
+                        <div class="dropdown-menu w-lg">
+                            <div class="row padder">
+                                <div class="col-sm-12" ng-repeat="score in avgScore.techScorePeoples track by $index">
+                                    <span>
+                                        <rating ng-model="$index + 1" max=5 readonly="true"></rating>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                        <span>{{(score*100/(avgScore.techScorePeoples[0]+avgScore.techScorePeoples[1]+
+                                            avgScore.techScorePeoples[2]+avgScore.techScorePeoples[3]+
+                                            avgScore.techScorePeoples[4])) | number:2}}%(<span class="text-danger">{{score}}</span>人)</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">责任心：
+                      <span>
+                          <rating ng-model="avgScore.dutyScore" max=5 readonly="true"></rating>
+                      </span>
+                    <div class="btn-group dropdown">
+                        <button class="btn btn-info btn-xs" data-toggle="dropdown">平均：{{avgScore.dutyScore | number:2}}分 <span class="caret"></span></button>
+                        <div class="dropdown-menu w-lg">
+                            <div class="row padder">
+                                <div class="col-sm-12" ng-repeat="score in avgScore.dutyScorePeoples track by $index">
+                                    <span>
+                                        <rating ng-model="$index + 1" max=5 readonly="true"></rating>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                        <span>{{(score*100/(avgScore.techScorePeoples[0]+avgScore.techScorePeoples[1]+
+                                            avgScore.techScorePeoples[2]+avgScore.techScorePeoples[3]+
+                                            avgScore.techScorePeoples[4])) | number:2}}%(<span class="text-danger">{{score}}</span>人)</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">劳动纪律：
+                      <span>
+                          <rating ng-model="avgScore.disciplineScore" max=5 readonly="true"></rating>
+                      </span>
+                    <div class="btn-group dropdown">
+                        <button class="btn btn-info btn-xs" data-toggle="dropdown">平均：{{avgScore.disciplineScore | number:2}}分 <span class="caret"></span></button>
+                        <div class="dropdown-menu w-lg">
+                            <div class="row padder">
+                                <div class="col-sm-12" ng-repeat="score in avgScore.disciplineScorePeoples track by $index">
+                                    <span>
+                                        <rating ng-model="$index + 1" max=5 readonly="true"></rating>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                        <span>{{(score*100/(avgScore.techScorePeoples[0]+avgScore.techScorePeoples[1]+
+                                            avgScore.techScorePeoples[2]+avgScore.techScorePeoples[3]+
+                                            avgScore.techScorePeoples[4])) | number:2}}%(<span class="text-danger">{{score}}</span>人)</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">安全意识：
+                      <span>
+                          <rating ng-model="avgScore.safeScore" max=5 readonly="true"></rating>
+                      </span>
+                    <div class="btn-group dropdown">
+                        <button class="btn btn-info btn-xs" data-toggle="dropdown">平均：{{avgScore.safeScore | number:2}}分 <span class="caret"></span></button>
+                        <div class="dropdown-menu w-lg">
+                            <div class="row padder">
+                                <div class="col-sm-12" ng-repeat="score in avgScore.safeScorePeoples track by $index">
+                                    <span>
+                                        <rating ng-model="$index + 1" max=5 readonly="true"></rating>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                        <span>{{(score*100/(avgScore.techScorePeoples[0]+avgScore.techScorePeoples[1]+
+                                            avgScore.techScorePeoples[2]+avgScore.techScorePeoples[3]+
+                                            avgScore.techScorePeoples[4])) | number:2}}%(<span class="text-danger">{{score}}</span>人)</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">勤奋度：
+                      <span>
+                          <rating ng-model="avgScore.workerSocre" max=5 readonly="true"></rating>
+                      </span>
+                    <div class="btn-group dropdown">
+                        <button class="btn btn-info btn-xs" data-toggle="dropdown">平均：{{avgScore.workerSocre | number:2}}分 <span class="caret"></span></button>
+                        <div class="dropdown-menu w-lg">
+                            <div class="row padder">
+                                <div class="col-sm-12" ng-repeat="score in avgScore.workerSocrePeoples track by $index">
+                                    <span>
+                                        <rating ng-model="$index + 1" max=5 readonly="true"></rating>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                        <span>{{(score*100/(avgScore.techScorePeoples[0]+avgScore.techScorePeoples[1]+
+                                            avgScore.techScorePeoples[2]+avgScore.techScorePeoples[3]+
+                                            avgScore.techScorePeoples[4])) | number:2}}%(<span class="text-danger">{{score}}</span>人)</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row wrapper-sm b-t m-t-sm">
+
+                <div class="col-sm-12 text-right">
+                    <span>评价人身份：</span>
+                    <button ng-class="{'btn-info':clickIndex == 3}" class="btn btn-default btn-xs"  ng-click="changeCommentorType(4, 3)">全部</button>
+                    <button ng-class="{'btn-info':clickIndex == $index}" class="btn btn-default btn-xs" ng-repeat="type in commentorTypes" ng-click="changeCommentorType(type.key, $index)">{{type.value}}</button>
+                </div>
+            </div>
+
+            <div class="row" ng-show="comments.length == 0">
+                <div class="text-center">
+                    <div class="clear">
+                        <div class="text-3x text-muted">
+                            <i class="icon icon-speech"></i>
+                        </div>
+                        <p class="text-md" >
+                            该选项下您目前还没有个人评价
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="m-b-xs b-l m-l-md streamline" ng-show="comments.length > 0">
+                <div ng-repeat="comment in comments">
+                    <a class="pull-left thumb-sm avatar m-l-n-md">
+                        <img ng-src="{{comment.commentorHeaderImg}}" ng-click="goCommentorHomePage(comment)" class="img-circle" alt="...">
+                    </a>
+                    <div class="m-l-lg panel b-a">
+                        <div class="panel-heading pos-rlt b-b b-light">
+                            <span class="arrow left"></span>
+                            <span class="text-info">{{comment.commentor}}</span>
+                            <label class="label bg-light dker m-l-xs font-normal">{{comment.projectOrg}}</label>
+                               <span class="text-muted m-l-sm pull-right">
+                                   <i class="fa fa-clock-o"></i>
+                                   {{comment.createTime}}
+                               </span>
+                        </div>
+                        <div class="panel-body">
+                            <div>{{comment.detailComment}}</div>
+                            <div class="m-t-sm">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix m-b">
+                    <div class="m-l-xxl">
+                        <button class="btn btn-default btn-sm w-full" type="button" ng-click="getMore()"  ng-show="showGetMore">加载更多</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
