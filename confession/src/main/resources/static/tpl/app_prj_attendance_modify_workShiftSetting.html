@@ -1,0 +1,87 @@
+<div class="modal-header">
+
+    <button type="button" class="close" ng-click="close()"><span aria-hidden="true">&times;</span></button>
+    <h3 class="modal-title">添加班次</h3>
+</div>
+<form class="form-horizontal ng-pristine form-validation" method="get" name="form" novalidate>
+    <div class="modal-body">
+        <div>
+            <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">时间设置：</label>
+            <div class="col-sm-9">
+                <table class="table no-border">
+                    <tbody>
+                    <tr>
+                        <td class="v-middle no-padder">签到</td>
+                        <td class="no-padder"><timepicker ng-model="flags[0].startTime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="!ismeridian"></timepicker></td>
+                        <td class="no-padder v-middle"><select name="account" style="width: 70px" class="form-control w-xxs input-sm" ng-change="updateTime()"  ng-model="seg1" ng-options="timeType.name for timeType in timeTypes">
+                        </select></td>
+                        <td class="v-middle no-padder">签退</td>
+                        <td class="no-padder"><timepicker ng-model="flags[0].endTime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="!ismeridian"></timepicker></td>
+                        <td class="v-middle no-padder"></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <table class="table no-border" ng-show="flags[1].show">
+                    <tbody>
+                    <tr>
+                        <td class="v-middle no-padder">签到</td>
+                        <td class="no-padder"><timepicker ng-model="flags[1].startTime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="!ismeridian"></timepicker></td>
+                        <td class="v-middle no-padder"><select name="account" style="width: 70px" class="form-control w-xxs input-sm" ng-change="updateTime()"  ng-model="seg2" ng-options="timeType.name for timeType in timeTypes">
+                        </select></td>
+                        <td class="v-middle no-padder">签退</td>
+                        <td class="no-padder"><timepicker ng-model="flags[1].endTime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="!ismeridian"></timepicker></td>
+                        <td class="v-middle no-padder"><button class="btn btn-danger btn-sm" ng-click="flags[1].show=false">删除</button></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <table class="table no-border" ng-show="flags[2].show">
+                    <tbody>
+                    <tr>
+                        <td class="v-middle no-padder">签到</td>
+                        <td class="no-padder"><timepicker ng-model="flags[2].startTime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="!ismeridian"></timepicker></td>
+                        <td class="v-middle no-padder"><select name="account" style="width: 70px" class="form-control w-xxs input-sm" ng-change="updateTime()"  ng-model="seg3" ng-options="timeType.name for timeType in timeTypes">
+                        </select></td>
+                        <td class="v-middle no-padder">签退</td>
+                        <td class="no-padder"><timepicker ng-model="flags[2].endTime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="!ismeridian"></timepicker></td>
+                        <!--<td class="v-middle no-padder"><button class="btn btn-danger btn-sm" ng-click="flags[2].show=false"><i class="fa fa-close"></i></button></td>-->
+                        <td class="v-middle no-padder"><button class="btn btn-danger btn-sm" ng-click="flags[2].show=false">删除</button></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <table class="table no-border" ng-show="flags[3].show">
+                    <tbody>
+                    <tr>
+                        <td class="v-middle no-padder">签到</td>
+                        <td class="no-padder"><timepicker ng-model="flags[3].startTime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="!ismeridian"></timepicker></td>
+                        <td class="v-middle no-padder"><select name="account" style="width: 70px" class="form-control w-xxs input-sm" ng-change="updateTime()"  ng-model="seg4" ng-options="timeType.name for timeType in timeTypes">
+                        </select></td>
+                        <td class="v-middle no-padder">签退</td>
+                        <td class="no-padder"><timepicker ng-model="flags[3].endTime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="!ismeridian"></timepicker></td>
+                        <td class="v-middle no-padder"><button class="btn btn-danger btn-sm" ng-click="flags[3].show=false">删除</button></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <button class="btn btn-info btn-sm" ng-click="addTimeSeg()" ng-disabled="flags[2].show && flags[1].show && flags[3].show">添加打卡时段</button>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label m-b-sm">开始：</label>
+            <div class="col-sm-9 m-b-sm" >
+                <div class="input-group">
+                    <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="workShiftSetting.startDate" is-open="startOpened" datepicker-options="dateOptions" min-date="tomorrow" ng-required="true" close-text="Close" />
+                    <span class="input-group-btn">
+                      <button type="button" class="btn btn-default" ng-click="openStart($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer" >
+        <button popover-animation="true" popover="如果一个班次中间的休息也需要打卡记录，您可以点击添加更多打卡时段" class="btn btn-link"><i class="icon icon-question"></i></button>
+        <button class="btn btn-default" ng-click="close()">取消</button>
+        <button class="btn btn-success" ng-click="submit()" ng-disabled='form.$invalid'>提交</button>
+    </div>
+</form>

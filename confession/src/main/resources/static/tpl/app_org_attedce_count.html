@@ -1,0 +1,84 @@
+<!-- breadcrumb -->
+<ul class="breadcrumb bg-white b-b wrapper-sm m-b-none">
+  <li><i class="fa fa-home"></i> 主页</li>
+  <li>考勤管理</li>
+  <li class="active">考勤统计</li>
+</ul>
+<!-- / breadcrumb -->
+<!-- hbox layout -->
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-controller="orgAttdStatisticsController">
+  <div class="wrapper-sm" >
+    <div class="panel panel-default">
+      <div class="row wrapper">
+        <div class="col-md-5 col-sm-5 col-lg-5">
+          <select name="account" class="form-control w-lg m-r-xs" ng-change="reloadData()" ng-model="socialOrg" ng-options="socialOrg.orgName for socialOrg in socialOrgs">
+          </select>
+        </div>
+        <div class="col-md-7 col-sm-7 col-lg-7">
+          <select name="account" class="form-control w-xs inline pull-left v-middle m-r-xs" ng-change="reloadData()" ng-model="year" ng-options="year for year in years">
+          </select>
+          <button class="btn btn-default pull-left" ng-click="prevMonth()"><i class="fa fa-caret-left"></i> </button>
+          <select name="account" class="form-control w-xs inline v-middle pull-left m-r-xs m-l-xs" ng-change="reloadData()" ng-model="month" ng-options="month for month in months">
+          </select>
+          <button class="btn btn-default pull-left" ng-click="nextMonth()"><i class="fa fa-caret-right"></i> </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="padder m-b-md"><b class="m-r-xs">班次考勤</b><span class="badge bg-success m-r-xs">修订后</span><span class="badge bg-primary ">实际打卡值</span></div>
+          <table class="table table-bordered">
+            <thead>
+            <tr>
+              <th>总人数(人)</th>
+              <th>总考勤(天)</th>
+              <th>工时(小时)</th>
+              <th>正常(次)</th>
+              <th>迟到(次)</th>
+              <th>早退(次)</th>
+              <th>错误(次)</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td><span class="text-success">{{workShiftStatistics.attdTotalNum}}</span>/<span class="text-primary">{{workShiftStatistics.orgNum}}</span></td>
+              <td><span class="text-success">{{workShiftStatistics.actAttdDays}}</span></td>
+              <td><span class="text-primary">{{workShiftStatistics.modifyWorkingHours | number:2}}</span>/<span class="text-success">{{workShiftStatistics.workingHours | number:2}}</span></td>
+              <td><span class="text-primary">{{workShiftStatistics.modifyNormalTimes}}</span>/<span class="text-success">{{workShiftStatistics.normalTimes}}</span></td>
+              <td><span class="text-primary">{{workShiftStatistics.modifyLateTimes}}</span>/<span class="text-success">{{workShiftStatistics.lateTimes}}</span></td>
+              <td><span class="text-primary">{{workShiftStatistics.modifyLeaveEarlyTimes}}</span>/<span class="text-success">{{workShiftStatistics.leaveEarlyTimes}}</span></td>
+              <td><span class="text-primary">{{workShiftStatistics.modifyMissTimes}}</span>/<span class="text-success">{{workShiftStatistics.missTimes}}</span></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-md-12">
+          <div class="padder m-b-md"><b class="m-r-xs">自由考勤</b><span class="badge bg-success m-r-xs">修订后</span><span class="badge bg-primary ">实际打卡值</span></div>
+          <table class="table table-bordered">
+            <thead>
+            <tr>
+              <th>总人数(人)</th>
+              <th>总考勤(天)</th>
+              <th>工时(小时)</th>
+              <th>错误(次)</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td><span class="text-success">{{freeStatistics.attdTotalNum}}</span>/<span class="text-primary">{{freeStatistics.orgNum}}</span></td>
+              <td><span class="text-success">{{freeStatistics.actAttdDays}}</span></td>
+              <td><span class="text-primary">{{freeStatistics.modifyWorkingHours | number:2}}</span>/<span class="text-success">{{freeStatistics.workingHours | number:2}}</span></td>
+              <td><span class="text-primary">{{freeStatistics.modifyMissTimes}}</span>/<span class="text-success">{{freeStatistics.missTimes}}</span></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-md-12 b-t">
+          <div class="table-responsive">
+            <div ng-grid="gridOptions" style="min-height:680px"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /hbox layout -->

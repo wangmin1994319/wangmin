@@ -1,0 +1,81 @@
+<!-- breadcrumb -->
+<ul class="breadcrumb bg-white b-b wrapper-sm m-b-none">
+    <li><i class="fa fa-home"></i> 主页</li>
+    <li>我要招工</li>
+    <li class="active">招工记录</li>
+</ul>
+<!-- / breadcrumb -->
+<!-- hbox layout -->
+<div class="hbox hbox-auto-xs hbox-auto-sm">
+    <div class="wrapper-sm">
+        <tabset class="tab-container">
+            <tab>
+                <tab-heading>个人</tab-heading>
+                <div class="row m-b">
+                    <div class="col-sm-7">
+                        <button class="btn btn-default btn-addon"><i class="icon icon-refresh"></i>批量刷新</button>
+                        <button class="btn btn-default btn-addon"><i class="icon icon-control-pause"></i>暂停</button>
+                    </div>
+                    <div class="col-sm-5">
+                        <button class="btn btn-default pull-right">选择</button>
+                        <select name="account" class="form-control w-md pull-right m-r-xs">
+                            <option value="发布中">发布中职位</option>
+                            <option value="暂停">暂停职位</option>
+                            <option value="过期">过期职位</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="b-t" ng-controller="zgjl-gr">
+                    <div class="table-responsive">
+                        <div ng-grid="gridOptions" style="min-height:600px"></div>
+                    </div>
+                </div>
+            </tab>
+            <tab>
+                <tab-heading>班组</tab-heading>
+                <div class="row m-b">
+                    <div class="col-sm-7">
+                        <button class="btn btn-default btn-addon"><i class="icon icon-refresh"></i>批量刷新</button>
+                        <button class="btn btn-default btn-addon"><i class="icon icon-control-pause"></i>暂停</button>
+                    </div>
+                    <div class="col-sm-5">
+                        <button class="btn btn-default pull-right">选择</button>
+                        <select name="account" class="form-control w-md pull-right m-r-xs">
+                            <option value="发布中">发布中职位</option>
+                            <option value="暂停">暂停职位</option>
+                            <option value="过期">过期职位</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="b-t" ng-controller="zgjl-bz">
+                    <div class="table-responsive">
+                        <div ng-grid="gridOptions" style="min-height:600px"></div>
+                    </div>
+                </div>
+            </tab>
+            <tab>
+                <tab-heading>公司</tab-heading>
+                <div class="row m-b">
+                    <div class="col-sm-7">
+                        <button class="btn btn-default btn-addon"><i class="icon icon-refresh"></i>批量刷新</button>
+                        <button class="btn btn-default btn-addon"><i class="icon icon-control-pause"></i>暂停</button>
+                    </div>
+                    <div class="col-sm-5">
+                        <button class="btn btn-default pull-right">选择</button>
+                        <select name="account" class="form-control w-md pull-right m-r-xs">
+                            <option value="发布中">发布中职位</option>
+                            <option value="暂停">暂停职位</option>
+                            <option value="过期">过期职位</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="b-t" ng-controller="zgjl-gs">
+                    <div class="table-responsive">
+                        <div ng-grid="gridOptions" style="min-height:600px"></div>
+                    </div>
+                </div>
+            </tab>
+        </tabset>
+    </div>
+</div>
+<!-- /hbox layout -->

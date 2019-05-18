@@ -1,0 +1,34 @@
+<!-- breadcrumb -->
+<ul class="breadcrumb bg-white b-b wrapper-sm m-b-none">
+    <li><i class="fa fa-home"></i> 主页</li>
+    <li>考勤管理</li>
+    <li class="active">班次设置</li>
+</ul>
+<!-- / breadcrumb -->
+<!-- hbox layout -->
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-controller="prjWorkShiftSettingController">
+    <div>
+        <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+    </div>
+    <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+    <div class="wrapper-sm" >
+        <div class="panel panel-default">
+            <div class="row wrapper">
+                <div class="col-md-12">
+
+                    <select name="account" class="form-control w-md pull-right m-r-xs" ng-change="selectProjectOrg()" ng-model="myProjectOrg" ng-options="myProjectOrg.projectOrgName for myProjectOrg in myProjectOrgs">
+                    </select>
+
+                    <select class="form-control w-md pull-right m-r-xs" ng-change="changeProjects()" ng-model="socialOrg" ng-options="socialOrg.socialOrgName for socialOrg in socialOrgs">
+                    </select>
+                </div>
+            </div>
+            <div class="b-t">
+                <div class="table-responsive">
+                    <div ng-grid="gridOptions" style="min-height:680px"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /hbox layout -->

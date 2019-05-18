@@ -1,0 +1,44 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="close()"><span aria-hidden="true">&times;</span></button>
+    <h3 class="modal-title">详情</h3>
+</div>
+<div class="modal-body">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <p class="text-info">{{attdTime}}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table">
+                <tbody>
+                <tr>
+                    <td class="bg-light bg w-xs text-lg">{{attdTimeSeg}}</td>
+                    <td class="bg-light lt">{{myApeal.actAttdInfo}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <table class="table no-border">
+        <tbody>
+        <tr>
+            <td width="20%">申述内容：</td>
+            <td>{{myApeal.apealInfo}}</td>
+        </tr>
+        <tr>
+            <td colspan="2"><span class="font-bold">处理记录</span></td>
+        </tr>
+        <tr>
+            <td>处理结果：</td>
+            <td ><span class="text-danger">{{myApeal.result}}</span> <span class="pull-right text-right">{{approverName}} {{handleTime}}</span></td>
+        </tr>
+        <tr>
+            <td>结果说明：</td>
+            <td>{{myApeal.resultExplain}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</div>

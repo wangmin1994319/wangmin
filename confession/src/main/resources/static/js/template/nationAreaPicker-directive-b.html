@@ -1,0 +1,14 @@
+<div>
+    <div class="col-sm-3">
+        <select name="account" class="form-control"  ng-model="province" ng-change="addressChange()" ng-options="prov.ProID as prov.name for prov in totalProvinces">
+        </select>
+    </div>
+    <div class="col-sm-3">
+        <select name="account" class="form-control"  ng-model="city" ng-change="addressChange()" ng-options="city.CityID as city.name for city in citys">
+        </select>
+    </div>
+    <div class="col-sm-3">
+        <select name="account" class="form-control"  ng-model="distr"  ng-options="distr.Id as distr.DisName for distr in distrs">
+        </select>
+    </div>
+</div>

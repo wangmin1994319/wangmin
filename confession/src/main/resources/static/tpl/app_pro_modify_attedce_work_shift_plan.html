@@ -1,0 +1,71 @@
+<div class="modal-header">
+
+    <button type="button" class="close" ng-click="close()"><span aria-hidden="true">&times;</span></button>
+    <h3 class="modal-title">班次安排</h3>
+</div>
+<div class="modal-body">
+    <form class="form-horizontal ng-pristine form-validation" method="get" novalidate>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">班次：</label>
+            <div class="col-sm-10">
+                <select name="account" class="form-control" ng-model="workShiftPlan.workShift" ng-options="workShift.name for workShift in workShifts">
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">人员：</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" placeholder="选择人员" ng-model="showOrg">
+            </div>
+            <div class="col-sm-2">
+                <button class="btn btn-info btn-sm" ng-click="selectOrg()">选择人员</button>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">日期：</label>
+            <div class="col-sm-10">
+                <div class="col-sm-12 m-b-sm">
+                    <div class="checkbox">
+
+                        <label class="i-checks m-r-xs" ng-repeat="week in weeks">
+                            <input type="checkbox" data-checklist-model="workShiftPlan.workDays" data-checklist-value="week.value">
+                            <i></i>
+                            {{week.key}}
+                        </label>
+                    </div>
+                </div>
+                <label class="col-sm-2 control-label m-b-sm">开始：</label>
+                <div class="col-sm-6 m-b-sm" >
+                    <div class="input-group">
+                        <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="workShiftPlan.startDate" is-open="opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                        <span class="input-group-btn">
+                          <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-sm-4 m-b-sm" >
+                    <div class="checkbox">
+                        <label class="i-checks">
+                            <input type="checkbox" ng-model="checkEnd">
+                            <i></i>
+                            不设结束日
+                        </label>
+                    </div>
+                </div>
+                <label class="col-sm-2 control-label" ng-hide="checkEnd">结束：</label>
+                <div class="col-sm-6" ng-hide="checkEnd">
+                    <div class="input-group">
+                        <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="workShiftPlan.endDate" is-open="opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                        <span class="input-group-btn">
+                          <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer" >
+    <button class="btn btn-default" ng-click="close()">取消</button>
+    <button class="btn btn-success" ng-click="save()">提交</button>
+</div>

@@ -1,0 +1,53 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="close()"><span aria-hidden="true">&times;</span></button>
+    <h3 class="modal-title">同意并处理</h3>
+</div>
+<form class="form-horizontal form-validation" method="get" name="form">
+    <div class="modal-body">
+        <div>
+            <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">选择分组：</label>
+            <div class="col-sm-7">
+                <label class="form-control-static control-label"><b>{{projectOrg.projectOrgName}}</b></label><a class="m-l text-info"  ng-click="selectDefaultOrg()">[选择本组织]</a>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">
+
+            </label>
+            <div class="col-sm-7">
+                <p><button class="btn btn-success" ng-click="newOrg=true">创建新分包</button></p>
+            </div>
+        </div>
+        <div class="form-group" ng-show="newOrg">
+            <label class="col-sm-4 control-label">分包名称：</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" ng-model="newOrgName">
+            </div>
+            <div class="col-sm-2">
+                <button class="btn btn-default m-l" ng-click="createNewOrg()">确定</button>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">职务：</label>
+            <div class="col-sm-7" ng-hide="newOrg">
+                <select name="account" class="form-control m-b" ng-model="role" ng-options="role.name for role in roles"></select>
+            </div>
+            <div class="col-sm-7" ng-show="newOrg">
+                <label class="form-control-static control-label">分包管理员</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">阐述理由：</label>
+            <div class="col-sm-7">
+                <textarea ng-model="projectOrg.reply"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer" >
+        <button type="submit" class="btn btn-primary" ng-click="save()" ng-disabled='form.$invalid'>确认</button>
+    </div>
+</form>

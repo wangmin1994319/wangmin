@@ -1,0 +1,352 @@
+<!-- list -->
+<ul class="nav" ng-controller="NavController">
+
+
+    <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+        <span translate="aside.nav.PERSONAL" class="text-info-dker">个人信息</span>
+    </li>
+    <!--个人主页-->
+    <li ui-sref-active="active" ng-click="myHomepage()">
+        <a>
+            <i class="glyphicon glyphicon-user"></i>
+            <span>个人主页</span>
+        </a>
+    </li>
+    <!-- /个人主页-->
+
+    <!--我的项目-->
+    <li ui-sref-active="active">
+        <a ui-sref="app.project.org-list">
+            <i class="fa fa-building"></i>
+            <span translate="aside.nav.RPOJECT_GRP.ORG_SYSTEM_GRP.LIST">我的项目</span>
+        </a>
+    </li>
+    <!-- /我的项目-->
+
+    <!--申请加入-->
+    <li ui-sref-active="active">
+        <a ui-sref="app.organization.org-apply">
+            <i class="glyphicon glyphicon-edit"></i>
+            <span translate="aside.nav.RPOJECT_GRP.ORG_MANAGE_GRP.APPLY">申请加入</span>
+        </a>
+    </li>
+    <!-- /申请加入-->
+
+    <!--项目考勤-->
+    <li ui-sref-active="active">
+        <a ui-sref="app.project.attedce-record">
+            <i class="glyphicon glyphicon-calendar"></i>
+            <span translate="aside.nav.RPOJECT_GRP.ATTEDCE_GRP.ATT_RECORD">项目考勤</span>
+        </a>
+    </li>
+    <!--/项目考勤-->
+
+    <!-- 组织考勤-->
+    <!--<li>
+        <a href class="auto">
+            <span class="pull-right text-muted">
+                <i class="fa fa-fw fa-angle-right text"></i>
+                <i class="fa fa-fw fa-angle-down text-active"></i>
+            </span>
+            <i class="icon icon-calendar"></i>
+            <span translate="">组织考勤</span>
+        </a>
+        <ul class="nav nav-sub dk">
+            <li ui-sref-active="active">
+                <a ui-sref="app.organization.attd_myrecords">
+                    <span translate="aside.nav.ORGANIZATION_GRP.ATTEDCE_GRP.ORG_ATT_RECORD">考勤记录</span>
+                </a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="app.organization.attd_myworkshiftplan">
+                    <span translate="aside.nav.ORGANIZATION_GRP.ATTEDCE_GRP.ORG_ATT_MYWORKSHIFTPLAN">我的班次</span>
+                </a>
+            </li>
+        </ul>
+    </li>-->
+    <!-- /组织考勤-->
+
+    <!-- 项目考勤-->
+    <!--<li>
+        <a href class="auto">
+            <span class="pull-right text-muted">
+                <i class="fa fa-fw fa-angle-right text"></i>
+                <i class="fa fa-fw fa-angle-down text-active"></i>
+            </span>
+            <i class="icon icon-calendar"></i>
+            <span translate="">项目考勤</span>
+        </a>
+        <ul class="nav nav-sub dk">
+            <li ui-sref-active="active">
+                <a ui-sref="app.project.attedce-record">
+                    <span translate="aside.nav.RPOJECT_GRP.ATTEDCE_GRP.ATT_RECORD">考勤记录</span>
+                </a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="app.project.attedce-myworkshiftplan">
+                    <span translate="aside.nav.RPOJECT_GRP.ATTEDCE_GRP.MYWORKSHIFTPLAN">我的班次</span>
+                </a>
+            </li>
+        </ul>
+    </li>-->
+    <!-- /项目考勤-->
+
+    <!-- 我的组织-->
+    <!--<li>
+        <a href class="auto">
+            <span class="pull-right text-muted">
+                <i class="fa fa-fw fa-angle-right text"></i>
+                <i class="fa fa-fw fa-angle-down text-active"></i>
+            </span>
+            <i class="icon icon-list"></i>
+            <span translate="aside.nav.ORGANIZATION">我的组织</span>
+        </a>
+        <ul class="nav nav-sub dk">
+            <li ui-sref-active="active">
+                <a ui-sref="app.organization.org-list">
+                    <span translate="aside.nav.ORGANIZATION_GRP.ORG_SYSTEM_GRP.LIST">查看组织</span>
+                </a>
+            </li>
+            &lt;!&ndash;<li ui-sref-active="active">&ndash;&gt;
+                 &lt;!&ndash;<a ui-sref="app.organization.org-apply">&ndash;&gt;
+                    &lt;!&ndash;<span translate="aside.nav.ORGANIZATION_GRP.ORG_MANAGE_GRP.APPLY">组织申请</span>&ndash;&gt;
+                &lt;!&ndash;</a>&ndash;&gt;
+            &lt;!&ndash;</li>&ndash;&gt;
+        </ul>
+    </li>-->
+    <!-- /我的组织-->
+
+    <!-- 我的项目-->
+    <!--<li>
+        <a href class="auto">
+            <span class="pull-right text-muted">
+            <i class="fa fa-fw fa-angle-right text"></i>
+            <i class="fa fa-fw fa-angle-down text-active"></i>
+            </span>
+            <i class="icon icon-list"></i>
+            <span translate="aside.nav.RPOJECT">我的项目</span>
+        </a>
+        <ul class="nav nav-sub dk">
+            <li ui-sref-active="active">
+                <a ui-sref="app.project.org-list">
+                    <span translate="aside.nav.RPOJECT_GRP.ORG_SYSTEM_GRP.LIST">查看组织</span>
+                </a>
+            </li>
+            &lt;!&ndash;<li ui-sref-active="active">&ndash;&gt;
+                &lt;!&ndash;<a ui-sref="app.project.org-apply">&ndash;&gt;
+                    &lt;!&ndash;<span translate="aside.nav.RPOJECT_GRP.ORG_MANAGE_GRP.APPLY">组织申请</span>&ndash;&gt;
+                &lt;!&ndash;</a>&ndash;&gt;
+            &lt;!&ndash;</li>&ndash;&gt;
+        </ul>
+    </li>-->
+    <!-- /我的项目-->
+
+
+    <!--<li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+        <span translate="" class="text-info-dker">组织</span>
+    </li>-->
+    <!-- 组织管理-->
+    <!--<li>
+        <a href class="auto">
+            <span class="pull-right text-muted">
+                <i class="fa fa-fw fa-angle-right text"></i>
+                <i class="fa fa-fw fa-angle-down text-active"></i>
+            </span>
+            <i class="icon icon-list"></i>
+            <span translate="aside.nav.ORGANIZATION_GRP.ORG_NAMAGE">组织管理</span>
+        </a>
+        <ul class="nav nav-sub dk">
+            <li ui-sref-active="active">
+                <a ui-sref="app.organization.org-manage">
+                    <span translate="aside.nav.ORGANIZATION_GRP.ORG_MANAGE_GRP.MANAGE">组织管理</span>
+                </a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="app.create-org">
+                    <span translate="aside.nav.PERSON_GROUP.CREATE_ORG">创建组织</span>
+                </a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="app.organization.org-jurisdiction">
+                    <span translate="aside.nav.ORGANIZATION_GRP.ORG_MANAGE_GRP.JURISDICTION">权限设置</span>
+                </a>
+            </li>
+        </ul>
+    </li>-->
+    <!-- /组织管理-->
+
+    <!-- 组织考勤管理-->
+    <!--<li>
+        <a href class="auto">
+            <span class="pull-right text-muted">
+                <i class="fa fa-fw fa-angle-right text"></i>
+                <i class="fa fa-fw fa-angle-down text-active"></i>
+            </span>
+            <i class="icon icon-calendar"></i>
+            <span translate="aside.nav.ORGANIZATION_GRP.ATTEDCE_MANAGE">考勤管理</span>
+        </a>
+        <ul class="nav nav-sub dk">
+            <li ui-sref-active="active">
+                <a ui-sref="app.organization.attedce-count">
+                    <span translate="aside.nav.ORGANIZATION_GRP.ATTEDCE_GRP.ATT_COUNT">考勤统计</span>
+                </a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="app.organization.workShiftSetting">
+                    <span translate="aside.nav.ORGANIZATION_GRP.ATTEDCE_GRP.ORG_ATT_WORKSHIFTSETTING">班次设置</span>
+                </a>
+            </li>
+        </ul>
+    </li>-->
+    <!-- /组织考勤管理-->
+
+    <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+        <span translate="" class="text-info-dker">项目管理</span>
+    </li>
+
+    <!-- 创建项目-->
+    <li ui-sref-active="active">
+        <a ui-sref="app.organization.prj-create">
+            <i class="glyphicon glyphicon-plus"></i>
+            <span translate="aside.nav.RPOJECT_GRP.ORG_MANAGE_GRP.CREATE_PRJ">创建项目</span>
+        </a>
+    </li>
+    <!-- /创建项目-->
+
+    <!-- 权限设置-->
+    <li ui-sref-active="active">
+        <a ui-sref="app.project.org-jurisdiction">
+            <i class="fa fa-key"></i>
+            <span translate="aside.nav.RPOJECT_GRP.ORG_MANAGE_GRP.JURISDICTION">权限设置</span>
+        </a>
+    </li>
+    <!-- /权限设置-->
+
+    <!-- 考勤统计-->
+    <li ui-sref-active="active">
+        <a ui-sref="app.project.attedce-count">
+            <i class="glyphicon glyphicon-calendar"></i>
+            <span translate="aside.nav.RPOJECT_GRP.ATTEDCE_GRP.ATT_COUNT">考勤统计</span>
+        </a>
+    </li>
+    <!-- /考勤统计-->
+
+    <!-- 项目管理-->
+    <!--<li>
+        <a href class="auto">
+            <span class="pull-right text-muted">
+               <i class="fa fa-fw fa-angle-right text"></i>
+               <i class="fa fa-fw fa-angle-down text-active"></i>
+            </span>
+            <i class="icon icon-list"></i>
+            <span translate="aside.nav.RPOJECT_GRP.ORG_NAMAGE">组织管理</span>
+        </a>
+        <ul class="nav nav-sub dk">
+            <li ui-sref-active="active">
+                <a ui-sref="app.project.org-manage">
+                    <span translate="aside.nav.RPOJECT_GRP.ORG_MANAGE_GRP.MANAGE">组织管理</span>
+                </a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="app.organization.prj-create">
+                    <span translate="aside.nav.RPOJECT_GRP.ORG_MANAGE_GRP.CREATE_PRJ">创建项目</span>
+                </a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="app.project.org-jurisdiction">
+                    <span translate="aside.nav.RPOJECT_GRP.ORG_MANAGE_GRP.JURISDICTION">权限设置</span>
+                </a>
+            </li>
+        </ul>
+    </li>-->
+    <!-- /项目管理-->
+
+    <!-- 项目考勤管理-->
+    <!--<li>
+        <a href class="auto">
+            <span class="pull-right text-muted">
+                <i class="fa fa-fw fa-angle-right text"></i>
+                <i class="fa fa-fw fa-angle-down text-active"></i>
+            </span>
+            <i class="icon icon-calendar"></i>
+            <span translate="aside.nav.RPOJECT_GRP.ATTEDCE_MANAGE">考勤管理</span>
+        </a>
+        <ul class="nav nav-sub dk">
+            <li ui-sref-active="active">
+                <a ui-sref="app.project.attedce-count">
+                    <span translate="aside.nav.RPOJECT_GRP.ATTEDCE_GRP.ATT_COUNT">考勤统计</span>
+                </a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="app.project.workShiftSetting">
+                    <span translate="aside.nav.RPOJECT_GRP.ATTEDCE_GRP.ORG_ATT_WORKSHIFTSETTING">班次设置</span>
+                </a>
+            </li>
+         </ul>
+    </li>-->
+    <!-- /项目考勤管理 -->
+
+    <!--<li class="hidden-folded padder m-t m-b-sm text-muted text-xs">-->
+        <!--<span class="text-info-dker">招聘求职</span>-->
+    <!--</li>-->
+    <!--&lt;!&ndash; jobCompany&ndash;&gt;-->
+    <!--<li>-->
+        <!--<a href class="auto">-->
+            <!--<span class="pull-right text-muted">-->
+                <!--<i class="fa fa-fw fa-angle-right text"></i>-->
+                <!--<i class="fa fa-fw fa-angle-down text-active"></i>-->
+            <!--</span>-->
+            <!--<i class="icon icon-users"></i>-->
+            <!--<span translate="aside.nav.JOBCOMPANY">我要招工</span>-->
+        <!--</a>-->
+        <!--<ul class="nav nav-sub dk">-->
+            <!--<li ui-sref-active="active">-->
+                <!--<a ui-sref="app.recruitment.rec-in">-->
+                    <!--<span translate="aside.nav.JOBCOMPANY_GRP.REC_IN">发布招工</span>-->
+                <!--</a>-->
+            <!--</li>-->
+            <!--<li ui-sref-active="active">-->
+                <!--<a ui-sref="app.recruitment.rec-see-out">-->
+                    <!--<span translate="aside.nav.JOBCOMPANY_GRP.REC_SEE_OUT">查看求带走</span>-->
+                <!--</a>-->
+            <!--</li>-->
+            <!--<li ui-sref-active="active">-->
+                <!--<a ui-sref="app.recruitment.job_invite_history">-->
+                    <!--<span translate="aside.nav.JOBCOMPANY_GRP.REC_IN_HISTORY">招工记录</span>-->
+                <!--</a>-->
+            <!--</li>-->
+        <!--</ul>-->
+    <!--</li>-->
+    <!-- /jobCompany -->
+
+    <!-- jobPersonal-->
+    <!--<li>
+        <a href class="auto">
+            <span class="pull-right text-muted">
+                <i class="fa fa-fw fa-angle-right text"></i>
+                <i class="fa fa-fw fa-angle-down text-active"></i>
+            </span>
+            <i class="icon icon-wrench"></i>
+            <span translate="aside.nav.JOBPERSONAL">我要求活</span>
+        </a>
+        <ul class="nav nav-sub dk">
+            <li ui-sref-active="active">
+                <a ui-sref="app.recruitment.rec-out">
+                    <span translate="aside.nav.JOBPERSONAL_GRP.REC_OUT">发布求带走</span>
+                </a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="app.recruitment.rec-see-in">
+                    <span translate="aside.nav.JOBPERSONAL_GRP.REC_SEE_IN">查看招工</span>
+                </a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="app.recruitment.job_apply_history">
+                    <span translate="aside.nav.JOBPERSONAL_GRP.REC_OUT_HISTORY">求带走记录</span>
+                </a>
+            </li>
+        </ul>
+    </li>-->
+    <!-- /jobPersonal-->
+</ul>
+ <!-- / list -->

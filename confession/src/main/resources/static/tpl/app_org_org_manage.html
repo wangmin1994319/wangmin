@@ -1,0 +1,39 @@
+<!-- breadcrumb -->
+<ul class="breadcrumb bg-white b-b wrapper-sm m-b-none">
+  <li><i class="fa fa-home"></i> 主页</li>
+  <li>组织管理</li>
+  <li class="active">组织管理</li>
+</ul>
+<!-- / breadcrumb -->
+<!-- hbox layout -->
+<div class="hbox hbox-auto-xs hbox-auto-sm" >
+
+  <div class="wrapper-sm" >
+    <div class="panel panel-default" ng-controller="socialOrgManageController">
+      <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+      <div class="row wrapper-sm">
+        <div class="col-sm-12">
+          <button class="btn btn btn-default btn-addon" ng-click="updateSocialOrg()"><i class="fa fa-pencil-square-o"></i>编辑组织</button>
+          <button class="btn btn btn-default btn-addon" ng-click="popUploadCertificate()"><i class="fa fa-upload"></i>上传证书</button>
+          <div class="btn-group dropdown">
+            <button class="btn btn-default" data-toggle="dropdown">更多操作 <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li><a ng-click="dismissSocialOrg()">解散组织</a></li>
+              <li><a mwl-confirm message='你确定删除此组织吗?' confirm-text='是的' cancel-text='取消' on-confirm='deleteSocialOrg()' confirm-button-type='danger'>删除组织</a></li>
+            </ul>
+          </div>
+         <!-- <button class="btn m-b-xs btn btn-default btn-addon" ><i class="fa fa-unlink"></i>解散组织</button>
+          <button class="btn m-b-xs btn btn-default btn-addon" ><i class="fa fa-trash-o"></i>删除组织</button>-->
+        </div>
+      </div>
+      <div>
+        <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+      </div>
+      <div class="b-t">
+        <tree-grid tree-data="socialOrgs" tree-control="structureControl" col-defs="col_defs" expand-on="expanding_property" expand-level="2" icon-leaf= "glyphicon glyphicon-user"></tree-grid>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- /hbox layout -->

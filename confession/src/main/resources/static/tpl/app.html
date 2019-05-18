@@ -1,0 +1,28 @@
+
+<!-- saved from url=(0054)http://flatfull.com/themes/angulr/angular/tpl/app.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body><div data-ng-include=" &#39;tpl/blocks/header.html&#39; " class="app-header navbar">
+</div>
+<!-- / navbar -->
+
+<!-- menu -->
+<div data-ng-include=" &#39;tpl/blocks/aside.html&#39; " class="app-aside hidden-xs {{app.settings.asideColor}}">
+</div>
+<!-- / menu -->
+
+<!-- content -->
+<div class="app-content">
+    <div ui-butterbar=""></div>
+    <a href="" class="off-screen-toggle hide" ui-toggle-class="off-screen" data-target=".app-aside"></a>
+    <div class="app-content-body fade-in-up" ui-view=""></div>
+</div>
+<!-- /content -->
+
+<!-- footer -->
+<div class="app-footer wrapper b-t bg-light">
+    <span class="pull-right">{{app.version}}</span>
+    &copy; 2015 中架工信 版权所有.
+</div>
+<!-- / footer -->
+
+
+</body></html>

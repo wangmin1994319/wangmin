@@ -1,0 +1,31 @@
+<!-- breadcrumb -->
+<ul class="breadcrumb bg-white b-b wrapper-sm m-b-none">
+    <li><i class="fa fa-home"></i> 主页</li>
+    <li>我的组织</li>
+    <li class="active">组织申请记录</li>
+</ul>
+<!-- / breadcrumb -->
+<!-- hbox layout -->
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-controller="orgApplayRecordsCtrl">
+    <div class="wrapper-sm" >
+        <div class="panel panel-default">
+            <div class="row wrapper">
+                <div class="col-xs-12 col-md-12 col-sm-12 col-lg-12">
+                    <select name="account" class="form-control w-sm inline v-middle">
+                        <option>全部</option>
+                        <option>组织</option>
+                        <option>工人</option>
+                    </select>
+                    <button class="btn btn-default">确定</button>
+                    <button class="btn btn-default">删除消息</button>
+                </div>
+            </div>
+            <div class="b-t">
+                <div class="table-responsive">
+                    <div ng-grid="gridOptions" style="min-height:680px"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /hbox layout -->

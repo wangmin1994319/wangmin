@@ -1,0 +1,38 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="close()"><span aria-hidden="true">&times;</span></button>
+    <h3 class="modal-title">编辑员工</h3>
+</div>
+<div class="modal-body">
+
+    <form class="form-horizontal" method="get">
+        <div>
+            <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">姓名：</label>
+            <div class="col-sm-7">
+                <p class="form-control-static">{{data.name}}</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">所属部门：</label>
+            <div class="col-sm-7">
+                <!--<p class="form-control-static">{{showName}}<a class="text-info" ng-click="popDeptTree()">选择</a></p>-->
+                <select name="account" class="form-control m-b" ng-model="dept" ng-options="dept.name for dept in depts">
+
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">职务：</label>
+            <div class="col-sm-7">
+                <select name="account" class="form-control m-b" ng-model="role" ng-options="role.name for role in roles">
+
+                </select>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer" >
+    <button class="btn btn-primary" ng-click="save()">保存</button>
+</div>

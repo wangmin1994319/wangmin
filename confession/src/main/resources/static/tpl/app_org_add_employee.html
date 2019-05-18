@@ -1,0 +1,39 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="close()"><span aria-hidden="true">&times;</span></button>
+    <h3 class="modal-title">添加员工</h3>
+</div>
+<form class="form-horizontal form-validation" method="get" name="form" novalidate>
+    <div class="modal-body">
+        <div>
+            <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">登录账号：</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" placeholder="请输入手机号码/身份证号/工信号" ng-blur="getNewworkerInfo()" ng-model="account" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">姓名：</label>
+            <div class="col-sm-8">
+                <p class="form-control-static">{{newworkerInfo.realName}}</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">所属部门：</label>
+            <div class="col-sm-8">
+                <select name="account" class="form-control m-b" ng-model="dept" ng-options="dept.name for dept in depts"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">职务：</label>
+            <div class="col-sm-8">
+                <select name="account" class="form-control w-lg m-r-xs pull-left" ng-model="role" ng-options="role.name for role in roles"></select>
+                <button class="btn btn-default" ng-click="gotoJurisdiction()">编辑职务</button>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer" >
+        <button type="submit" class="btn btn-primary" ng-click="save()" ng-disabled='form.$invalid'>保存</button>
+    </div>
+</form>

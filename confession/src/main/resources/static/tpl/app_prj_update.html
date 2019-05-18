@@ -1,0 +1,158 @@
+<script type="text/ng-template" id="myModalContent.html">
+    <div ng-include="'tpl/zjgx_xgsjxx.html'"></div>
+</script>
+<!-- breadcrumb -->
+<ul class="breadcrumb bg-white b-b wrapper-sm m-b-none">
+    <li><a href><i class="fa fa-home"></i> 主页</a></li>
+    <li><a href>我的项目部信息</a></li>
+</ul>
+<!-- / breadcrumb -->
+<!-- layout -->
+<div class="wrapper-sm" ng-controller="prjupdateController">
+    <div class="panel panel-default">
+        <div class="panel-heading font-bold">请完善我的项目部资料</div>
+        <div class="panel-body">
+            <div>
+                <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+                <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+            </div>
+            <form class="form-horizontal form-validation" name="form">
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-3 col-lg-3 control-label">项目名称：</label>
+                    <div class="col-sm-9 col-md-7 col-lg-6">
+                        <input type="text" class="form-control" placeholder="请输入项目名称" ng-model="prj.name" readonly>
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-3 col-lg-3 control-label">项目地址：</label>
+                    <nation-area-picker region="prj.region"></nation-area-picker>
+                </div>
+
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-3 col-lg-3 control-label">详细地址：</label>
+                    <div class="col-sm-9 col-md-7 col-lg-6">
+                        <input type="text" class="form-control" placeholder="请输入项目具体地址" ng-model="prj.addr" ng-maxlength="40" required>
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-3 col-lg-3 control-label">工地类型：</label>
+                    <div class="col-sm-9 col-md-7 col-lg-6">
+                        <div class="checkbox">
+                            <label class="i-checks w-xs" ng-repeat="type in bulidTypes">
+                                <input type="checkbox" checklist-model="prj.bulidType" checklist-value="type.value">
+                                <i></i>
+                                {{type.key}}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-3 col-lg-3 control-label">结构形式：</label>
+                    <div class="col-sm-9 col-md-7 col-lg-6">
+                        <div class="checkbox">
+                            <label class="i-checks w-xs" ng-repeat="type in structTypes">
+                                <input type="checkbox" checklist-model="prj.structType" checklist-value="type.value">
+                                <i></i>
+                                {{type.key}}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-3 col-lg-3 control-label">地上面积：</label>
+                    <div class="col-sm-8 col-md-6 col-lg-5">
+                        <input type="number" class="form-control" placeholder="0" ng-model="prj.agroundArea" ng-pattern="/^[0-9]\d*(\.\d+)?$/" required>
+                    </div>
+                    <div class="col-sm-1 col-md-1 col-lg-1">
+                        <p class="form-control-static">万平方米</p>
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-3 col-lg-3 control-label">地下面积：</label>
+                    <div class="col-sm-8 col-md-6 col-lg-5">
+                        <input type="number" class="form-control" placeholder="0" ng-model="prj.undergroundArea" ng-pattern="/^[0-9]\d*(\.\d+)?$/" required>
+                    </div>
+                    <div class="col-sm-1 col-md-1 col-lg-1">
+                        <p class="form-control-static">万平方米</p>
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-3 col-lg-3 control-label">建筑面积：</label>
+                    <div class="col-sm-8 col-md-6 col-lg-5">
+                        <input type="number" class="form-control" placeholder="0" ng-model="prj.bulidArea" ng-pattern="/^[0-9]\d*(\.\d+)?$/" required>
+                    </div>
+                    <div class="col-sm-1 col-md-1 col-lg-1">
+                        <p class="form-control-static">万平方米</p>
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-3 col-lg-3 control-label">占地面积：</label>
+                    <div class="col-sm-8 col-md-6 col-lg-5">
+                        <input type="number" class="form-control" placeholder="0" ng-model="prj.floorArea" ng-pattern="/^[0-9]\d*(\.\d+)?$/" required>
+                    </div>
+                    <div class="col-sm-1 col-md-1 col-lg-1">
+                        <p class="form-control-static">万平方米</p>
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-3 col-lg-3 control-label">工程投资总额：</label>
+                    <div class="col-sm-8 col-md-6 col-lg-5">
+                        <input type="number" class="form-control" placeholder="0" ng-model="prj.spend" ng-pattern="/^[0-9]\d*(\.\d+)?$/" required>
+                    </div>
+                    <div class="col-sm-1 col-md-1 col-lg-1">
+                        <p class="form-control-static">万元</p>
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-3 col-lg-3 control-label">开工日期：</label>
+                    <div birth-day-picker birthday="prj.startDate"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-3 col-lg-3 control-label">开发公司名称：</label>
+                    <div class="col-sm-9 col-md-7 col-lg-6">
+                        <input type="text" class="form-control" placeholder="请输入开发公司名称" ng-model="prj.devCom" ng-maxlength="20" required >
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-3 col-lg-3 control-label">总承包单位名称：</label>
+                    <div class="col-sm-9 col-md-7 col-lg-6">
+                        <input type="text" class="form-control"  ng-model="contractCom"  readonly>
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-3 col-lg-3 control-label">监理单位名称：</label>
+                    <div class="col-sm-9 col-md-7 col-lg-6">
+                        <input type="text" class="form-control" placeholder="请输入监理名称" ng-model="prj.supervisorCom" ng-maxlength="20" required >
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-3 col-lg-3 control-label">项目经理姓名：</label>
+                    <div class="col-sm-9 col-md-7 col-lg-6">
+                        <p class="form-control-static">{{pmName}}</p>
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <div class="col-sm-10 col-sm-offset-3 col-md-8 col-md-offset-3">
+                        <button type="submit" class="btn btn-success" ng-click="save()" ng-disabled='form.$invalid'>保存</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- /layout -->

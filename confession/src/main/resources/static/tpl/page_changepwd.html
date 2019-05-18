@@ -1,0 +1,48 @@
+<!-- breadcrumb -->
+<ul class="breadcrumb bg-white b-b wrapper-sm m-b-none">
+    <li><i class="fa fa-home"></i> 主页</li>
+    <li>修改密码</li>
+</ul>
+<!-- / breadcrumb -->
+<!-- Information Perfection -->
+<div class="wrapper-sm" ng-controller="changePwdController">
+    <div class="panel panel-default">
+        <div class="panel-heading font-bold">修改个人密码</div>
+        <div class="panel-body ">
+            <form name="form"  class="form-horizontal form-validation" ng-init="isCollapsed=true" >
+                <!-- alert -->
+                <div>
+                    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+                </div>
+                <!-- / alert -->
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-3 col-lg-3 control-label">原密码：</label>
+                    <div class="col-sm-9 col-md-7 col-lg-6">
+                        <input type="password" class="form-control" placeholder="请输入原始密码" ng-model="oldPwd" ng-pattern="/^[a-zA-Z0-9]{6,20}$/" required>
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-3 col-lg-3 control-label">新密码：</label>
+                    <div class="col-sm-9 col-md-7 col-lg-6">
+                        <input type="password" class="form-control" placeholder="请输入新密码" ng-pattern="/^[a-zA-Z0-9]{6,20}$/" ng-model="newPwd"  tooltip="长度6-20位、支持数字和字母(区分大小写)、不允许空格"  tooltip-trigger="focus" tooltip-placement="top" required>
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-3 col-lg-3 control-label">再次输入新密码：</label>
+                    <div class="col-sm-9 col-md-7 col-lg-6">
+                        <input type="password" class="form-control" placeholder="请再次输入新密码" ng-model="confirmPwd" ui-validate=" '$value==newPwd' " ui-validate-watch="newPwd " required>
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <div class="col-sm-10 col-sm-offset-3 col-md-8 col-md-offset-3">
+                        <button type="submit" class="btn btn-success" ng-disabled='form.$invalid' ng-click="save()">确认修改</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- /Information Perfection -->

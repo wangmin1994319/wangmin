@@ -1,0 +1,19 @@
+
+<div class="panel panel-default b-t-none" ng-controller="suspendingMsgController">
+    <div class="panel-body">
+        <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+        <div class="row m-b">
+            <div class="col-sm-12">
+                <select name="account" class="form-control w-md pull-right m-r-xs" ng-change="reloadData()" ng-model="taskType" ng-options="taskType.name for taskType in taskTypes">
+                </select>
+                <select name="account" class="form-control w-md pull-right m-r-xs" ng-change="reloadData()" ng-model="project" ng-options="project.showName for project in projects">
+                </select>
+            </div>
+        </div>
+        <div class="b-t">
+            <div class="table-responsive">
+                <div ng-grid="gridOptions" style="min-height:600px"></div>
+            </div>
+        </div>
+    </div>
+</div>

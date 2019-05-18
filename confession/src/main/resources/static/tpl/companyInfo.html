@@ -1,0 +1,51 @@
+<div class="wrapper-xs" ng-controller="CompanyInfoController">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="col-sm-5 col-sm-offset-4">
+                <table class="table no-border">
+                    <tbody>
+                    <tr>
+                        <td width="35%">公司名称：</td>
+                        <td>{{orgName}}</td>
+                    </tr>
+                    <tr>
+                        <td>法人姓名：</td>
+                        <td>{{legalName}}</td>
+                    </tr>
+                    <tr>
+                        <td>工信号：</td>
+                        <td>{{conductssId}}</td>
+                    </tr>
+                    <tr>
+                        <td>公司固话：</td>
+                        <td>{{fixedLine}}</td>
+                    </tr>
+                    <tr>
+                        <td>公司邮箱：</td>
+                        <td>{{email}}</td>
+                    </tr>
+                    <tr>
+                        <td>公司地址：</td>
+                        <td>{{addr}}</td>
+                    </tr>
+                    <tr>
+                        <td>证书：</td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-12 m-b">
+                                    <span class="badge bg-success">&nbsp;</span> <span>证书已认证</span>
+                                    <span class="badge bg-dark">&nbsp;</span> <span>证书未认证</span>
+                                </div>
+                            </div>
+                            <span class="badge bg-dark rounded" ng-show="socialOrg_newBusinessLic">新一代营业执照（三证合一）</span>
+                            <span class="label bg-dark rounded" ng-show="socialOrg_businessLic">营业执照</span>
+                            <span class="label bg-dark rounded" ng-show="socialOrg_taxLic">税务登记证</span>
+                            <span class="label bg-dark rounded" ng-show="socialOrg_orgCode">组织机构代码证</span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

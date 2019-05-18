@@ -1,0 +1,14 @@
+<div class="col-sm-9 col-md-7 col-lg-6">
+    <div ng-show="!image1 && headerImg" class="thumb m-b" ><img src="../img/noImg.png"></div>
+    <div ng-show="!image1 && !headerImg" class="thumb m-b"><img ng-src="{{headerImgUrl}}"></div>
+    <div ng-show="image1" class="thumb m-b">
+        <img ng-src="{{image1.compressed.dataURL}}">
+    </div>
+    <div>
+        <span class="btn btn-default btn-file">
+        <span class="fileinput-new">选择照片 </span>
+            <input type="file" compress="image1" resize-max-height="1000" resize-max-width="1000" resize-quality="0.7" resize-type="image/jpg" accept=".jpg,.png,.jpeg,.gif,.bmp,.xgd"/>
+        </span>
+        <button class="btn btn-success" ng-click="imgUpload()">上传</button>
+    </div>
+</div>

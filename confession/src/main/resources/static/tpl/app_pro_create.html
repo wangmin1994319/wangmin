@@ -1,0 +1,74 @@
+<script type="text/ng-template" id="myModalContent.html">
+    <div ng-include="'tpl/zjgx_xgsjxx.html'"></div>
+</script>
+<!-- breadcrumb -->
+<ul class="breadcrumb bg-white b-b wrapper-sm m-b-none">
+    <li><i class="fa fa-home"></i> 主页</li>
+    <li>项目管理</li>
+    <li class="active">创建项目</li>
+</ul>
+<!-- / breadcrumb -->
+<!-- layout -->
+<div class="wrapper-sm" ng-controller="CreatePrjCtrl">
+    <div class="panel panel-default">
+        <div class="panel-heading">请完善我的项目资料</div>
+        <div class="panel-body">
+            <div>
+                <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+                <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+            </div>
+            <form class="form-horizontal form-validation" ng-show="!showProjectOrg" name="form">
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-3 col-lg-3 control-label">项目名称：</label>
+                    <div class="col-sm-9 col-md-7 col-lg-6">
+                        <input type="text" class="form-control" placeholder="请输入项目名称" ng-model="prj.name" ng-maxlength="20" required>
+                    </div>
+                </div>
+
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-3 col-lg-3 control-label">项目管理员：</label>
+                    <div class="col-sm-9 col-md-7 col-lg-6">
+                        <p class="form-control-static">{{pmName}} </p>
+                    </div>
+                </div>
+
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-3 col-lg-3 control-label">总包名称：</label>
+                    <div class="col-sm-9 col-md-7 col-lg-6">
+                        <input type="text" class="form-control" placeholder="请输入总包名称" ng-blur="createSocialOrg()" ng-model="prj.contractorName" ng-maxlength="20" required>
+                    </div>
+                </div>
+
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <div class="col-sm-10 col-sm-offset-3 col-md-8 col-md-offset-3">
+                        <button type="submit" class="btn btn-success" ng-click="createPrj()" ng-disabled='form.$invalid'>创建项目</button>
+                    </div>
+                </div>
+
+            </form>
+            <div ng-show="showProjectOrg">
+                <div class="col-sm-2 col-md-3 col-lg-4"></div>
+                <div class="col-sm-8 col-md-6 col-lg-4">
+                    <a href="" class="pull-left m-r text-4x text-success">
+                        <i class="icon icon-check m-r-sm"></i>
+                    </a>
+                    <div class="clear m-b">
+                        <div class="m-b m-t-sm">
+                            <span class="text-2x">项目创建成功</span>
+                        </div>
+                        <p class="m-b">
+                        <p class="text-lg">项目编号：<b class="text-success">{{projectConductssId}}</b></p>
+                        <p class="text-lg">总包工信号：<b class="text-success">{{projectOrgConductssId}}</b></p>
+                        </p>
+                        <a class="btn btn-lg btn-success m-t" ng-click="viewMyProjectOrg()">去查看</a>
+                    </div>
+                </div>
+                <div class="col-sm-2 col-md-3 col-lg-3"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /layout -->

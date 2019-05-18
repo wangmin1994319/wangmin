@@ -1,0 +1,102 @@
+<!-- breadcrumb -->
+<ul class="breadcrumb bg-white b-b wrapper-sm m-b-none">
+    <li><i class="fa fa-home"></i> 主页</li>
+    <li>项目管理</li>
+    <li class="active">考勤统计</li>
+</ul>
+<!-- / breadcrumb -->
+<!-- hbox layout -->
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-controller="attdStatisticsController">
+    <div class="wrapper-sm" >
+        <div class="panel panel-default">
+            <div class="row wrapper">
+                <div class="row text-center">
+                    <div class="col-xs-5 col-sm-5 col-lg-5 pull-left">
+                        <span class="pull-left m-l-xs l-h-3x">选择时间：</span>
+                        <p class="input-group w-sm pull-left">
+                            <input type="text"
+                            class="form-control"
+                            datepicker-popup="yyyy-MMMM-dd"
+                            ng-model="startDate"
+                            max-data="endDate"
+                            is-open="startOpened"
+                            datepicker-options="dateOptions"
+                            ng-required="true"
+                            close-text="Close" />
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="openStart($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
+                        </p>
+                        <span class="pull-left m-l-xs l-h-3x">至：</span>
+                        <p class="input-group w-sm pull-left">
+                            <input type="text"
+                                   class="form-control"
+                                   datepicker-popup="yyyy-MM-dd"
+                                   ng-model="endDate"
+                                   min-date="startDate"
+                                   is-open="endOpened "
+                                   datepicker-options="dateOptions"
+                                   ng-required="true"
+                                   close-text="Close" />
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="openEnd($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
+                        </p>
+
+                        <!--<select name="account" class="form-control w-xs inline pull-left v-middle m-l-xs m-r-xs" ng-change="reloadData()" ng-model="year" ng-options="year for year in years">
+                        </select>
+                        <button class="btn btn-default pull-left" ng-click="prevMonth()"><i class="fa fa-caret-left"></i> </button>
+                        <select name="account" class="form-control w-xs inline v-middle pull-left m-r-xs m-l-xs" ng-change="reloadData()" ng-model="month" ng-options="month for month in months">
+                        </select>
+                        <button class="btn btn-default pull-left" ng-click="nextMonth()"><i class="fa fa-caret-right"></i> </button>-->
+
+                    </div>
+                    <div class="col-md-7 col-sm-7 col-lg-7 pull-right">
+                        <button class="btn btn-default pull-right m-r-xs" ng-click="selectPeople()">选择统计员工</button>
+                        <select name="account" class="form-control w-md pull-right m-r-xs" ng-change="getAttdRecords()" ng-model="myProject" ng-options="myProject.projectName for myProject in myProjects">
+                        </select>
+                        <select name="account" class="form-control w-md pull-right m-r-xs" ng-change="changeProjects()" ng-model="socialOrg" ng-options="socialOrg.socialOrgName for socialOrg in socialOrgs">
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="padder m-b-md"><b class="m-r-xs">考勤统计</b></div>
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>总人数(人)</th>
+                            <th>出勤日(天)</th>
+                            <th>总工时(小时)</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><span class="text-success">{{attdStatic.totalNum}}</span></td>
+                            <td><span class="text-success">{{attdStatic.attdDays}}</span></td>
+                            <td><span class="text-success">{{attdStatic.attdHours | number:1}}</span></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="padder m-b-md"><b class="m-r-xs">考勤详情</b></div>
+                    <div class="b-t">
+                        <tree-grid
+                                tree-data="structure"
+                                tree-control="orgBrowe"
+                                expand-level="3"
+                                col-defs="col_defs"
+                                expand-on="expanding_property"
+                                icon-leaf= "glyphicon glyphicon-user">
+                        </tree-grid>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /hbox layout -->

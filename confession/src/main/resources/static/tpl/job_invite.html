@@ -1,0 +1,415 @@
+<!-- breadcrumb -->
+<ul class="breadcrumb bg-white b-b wrapper-sm m-b-none">
+    <li><i class="fa fa-home"></i> 主页</li>
+    <li>我的组织信息</li>
+</ul>
+<!-- / breadcrumb -->
+<!-- Information Perfection -->
+
+<div class="wrapper-sm" ng-controller="JobInviteController">
+    <div class="panel panel-default">
+        <div class="panel-heading font-bold">发布招工信息</div>
+        <div class="form-group">
+            <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+            <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+        </div>
+        <div class="panel-body ">
+            <form name="form" class="form-horizontal form-validation">
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-3 col-lg-3 control-label"><span class="text-danger">*</span>招聘类型：</label>
+                    <div class="col-sm-9 col-md-7 col-lg-6">
+                        <div class="radio">
+                            <label class="i-checks i-checks-md">
+                                <input type="radio" name="licence" value="person" ng-model="licence" >
+                                <i></i>
+                                个人
+                            </label>
+                            <label class="i-checks i-checks-md">
+                                <input type="radio" name="licence" value="team" ng-model="licence">
+                                <i></i>
+                                班组
+                            </label>
+                            <label class="i-checks i-checks-md">
+                                <input type="radio" name="licence" value="company" ng-model="licence">
+                                <i></i>
+                                公司
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div ng-if="licence == 'person'">
+                    <div class="form-group">
+                        <label class="col-sm-3 col-md-3 col-lg-3 control-label"><span class="text-danger">*</span>职位类别：</label>
+                        <div class="col-sm-9 col-md-7 col-lg-6">
+                            <select name="account" class="form-control" ng-model="p.workType"
+                                    ng-options="type.value as type.key for type in workTypes">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 col-md-3 col-lg-3 control-label"><span class="text-danger">*</span>职位名称：</label>
+                        <div class="col-sm-9 col-md-7 col-lg-6">
+                            <input type="text" class="form-control" ng-model="p.workName" placeholder="请输入职位名称"
+                                   ng-maxLength="20" ng-pattern="/^[\u4e00-\u9fa5][\u4e00-\u9fa5·]{0,}$/" required>
+                        </div>
+                    </div>
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 col-md-3 col-lg-3 control-label"><span class="text-danger">*</span>招聘人数：</label>
+                        <div class="col-sm-9 col-md-7 col-lg-6">
+                            <input ng-model="p.inviteNum" type="text" value="0" class="form-control"
+                                   placeholder="请输入招聘人数" ng-pattern="/^[0-9]{1,6}$/" required>
+                        </div>
+                    </div>
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 col-md-3 col-lg-3 control-label"><span class="text-danger">*</span>年龄要求：</label>
+                        <div class="col-sm-5 col-md-4 col-lg-3">
+                            <select name="account" class="form-control" ng-model="$parent.ageMin" required>
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="18">18</option>
+                                <option value="19">19</option>
+                                <option value="20">20</option>
+                                <option value="21">21</option>
+                                <option value="22">22</option>
+                                <option value="23">23</option>
+                                <option value="24">24</option>
+                                <option value="25">25</option>
+                                <option value="26">26</option>
+                                <option value="27">27</option>
+                                <option value="28">28</option>
+                                <option value="29">29</option>
+                                <option value="30">30</option>
+                                <option value="31">31</option>
+                                <option value="32">32</option>
+                                <option value="33">33</option>
+                                <option value="34">34</option>
+                                <option value="35">35</option>
+                                <option value="36">36</option>
+                                <option value="37">37</option>
+                                <option value="38">38</option>
+                                <option value="39">39</option>
+                                <option value="40">40</option>
+                                <option value="41">41</option>
+                                <option value="42">42</option>
+                                <option value="43">43</option>
+                                <option value="44">44</option>
+                                <option value="45">45</option>
+                                <option value="46">46</option>
+                                <option value="47">47</option>
+                                <option value="48">48</option>
+                                <option value="49">49</option>
+                                <option value="50">50</option>
+                                <option value="51">51</option>
+                                <option value="52">52</option>
+                                <option value="53">53</option>
+                                <option value="54">54</option>
+                                <option value="55">55</option>
+                                <option value="56">56</option>
+                                <option value="57">57</option>
+                                <option value="58">58</option>
+                                <option value="59">59</option>
+                                <option value="60">60</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-4 col-md-3 col-lg-3">
+                            <select name="account" class="form-control" ng-model="$parent.ageMax" required>
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="18">18</option>
+                                <option value="19">19</option>
+                                <option value="20">20</option>
+                                <option value="21">21</option>
+                                <option value="22">22</option>
+                                <option value="23">23</option>
+                                <option value="24">24</option>
+                                <option value="25">25</option>
+                                <option value="26">26</option>
+                                <option value="27">27</option>
+                                <option value="28">28</option>
+                                <option value="29">29</option>
+                                <option value="30">30</option>
+                                <option value="31">31</option>
+                                <option value="32">32</option>
+                                <option value="33">33</option>
+                                <option value="34">34</option>
+                                <option value="35">35</option>
+                                <option value="36">36</option>
+                                <option value="37">37</option>
+                                <option value="38">38</option>
+                                <option value="39">39</option>
+                                <option value="40">40</option>
+                                <option value="41">41</option>
+                                <option value="42">42</option>
+                                <option value="43">43</option>
+                                <option value="44">44</option>
+                                <option value="45">45</option>
+                                <option value="46">46</option>
+                                <option value="47">47</option>
+                                <option value="48">48</option>
+                                <option value="49">49</option>
+                                <option value="50">50</option>
+                                <option value="51">51</option>
+                                <option value="52">52</option>
+                                <option value="53">53</option>
+                                <option value="54">54</option>
+                                <option value="55">55</option>
+                                <option value="56">56</option>
+                                <option value="57">57</option>
+                                <option value="58">58</option>
+                                <option value="59">59</option>
+                                <option value="60">60</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 col-md-3 col-lg-3 control-label"><span class="text-danger">*</span>工期：</label>
+                        <div class="col-sm-7 col-md-5 col-lg-4">
+                            <input type="text" class="form-control" placeholder="请输入时间" ng-model="$parent.workTime"
+                                   ng-pattern="/^[1-9]\d*|[1-9]\d*.\d*|0.\d*[1-9]\d*$/" required>
+                        </div>
+                        <div class="col-sm-2 col-md-2 col-lg-2">
+                            <select name="account" class="form-control" ng-model="$parent.timeLimit"
+                                    ng-options="type.value as type.key for type in timeLimitTypes">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 col-md-3 col-lg-3 control-label"><span class="text-danger">*</span>工资待遇：</label>
+                        <div class="col-sm-7 col-md-5 col-lg-4">
+                            <input type="text" class="form-control" placeholder="请输入工资" ng-model="$parent.salary"
+                                   ng-pattern="/^[0-9]{1,13}$/" required>
+                        </div>
+                        <div class="col-sm-2 col-md-2 col-lg-2">
+                            <select name="account" class="form-control" ng-model="$parent.salary1"
+                                    ng-options="type.value as type.key for type in salary1Types">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 col-md-3 col-lg-3 control-label"><span class="text-danger">*</span>公司地址：</label>
+                        <nation-area-picker region="p.companyAddr"></nation-area-picker>
+                    </div>
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 col-md-3 col-lg-3 control-label"><span class="text-danger">*</span>工作经验：</label>
+                        <div class="col-sm-9 col-md-7 col-lg-6">
+                            <select name="account" class="form-control" ng-model="p.workExpr"
+                                    ng-options="type.value as type.key for type in personalWorkExprTypes">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 col-md-3 col-lg-3 control-label"><span class="text-danger">*</span>学历要求：</label>
+                        <div class="col-sm-9 col-md-7 col-lg-6">
+                            <select name="account" class="form-control" ng-model="p.edu"
+                                    ng-options="type.value as type.key for type in jobEduTypes">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <div class="form-group" >
+                        <label class="col-sm-3 col-md-3 col-lg-3 control-label">相关福利：</label>
+                        <div class="col-sm-9 col-md-7 col-lg-6">
+                            <div class="checkbox">
+                                <label class="i-checks w-sm" ng-repeat="jobBoonType in jobBoonTypes">
+                                    <input type="checkbox" checklist-model="p.boon" checklist-value="jobBoonType.value">
+                                    <i></i>
+                                    {{jobBoonType.key}}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 col-md-3 col-lg-3 control-label">工作要求：</label>
+                        <div class="col-sm-9 col-md-7 col-lg-6">
+                            <textarea class="form-control" ng-model="p.jobRequire" rows="6" placeholder="不少于10个字"
+                                      ng-minLength="10" ng-maxLength="20" required></textarea>
+                        </div>
+                    </div>
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                </div>
+                <div ng-if="licence == 'team'">
+                    <div class="form-group">
+                        <label class="col-sm-3 col-md-3 col-lg-3 control-label"><span class="text-danger">*</span>班组类型：</label>
+                        <div class="col-sm-5 col-md-4 col-lg-3">
+                            <select name="account" class="form-control" ng-model="$parent.team" ng-change="teamTypeChange(team)"
+                                    ng-options="type.value as type.key for type in teamTypes">
+                            </select>
+                        </div>
+                        <div class="col-sm-4 col-md-3 col-lg-3">
+                            <select name="account" class="form-control" ng-model="$parent.detailDeam"
+                                    ng-options="type.value as type.key for type in detailTeamTypes">>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 col-md-3 col-lg-3 control-label"><span class="text-danger">*</span>招聘人数：</label>
+                        <div class="col-sm-9 col-md-7 col-lg-6">
+                            <input ng-model="t.inviteNum" type="text" value="0" class="form-control"
+                                   placeholder="请输入招聘人数" ng-pattern="/^[0-9]{1,6}$/" required>
+                        </div>
+                    </div>
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 col-md-3 col-lg-3 control-label"><span class="text-danger">*</span>工期：</label>
+                        <div class="col-sm-7 col-md-5 col-lg-4">
+                            <input type="text" class="form-control" placeholder="请输入时间" ng-model="$parent.workTime"
+                                   ng-pattern="/^[1-9]\d*|[1-9]\d*.\d*|0.\d*[1-9]\d*$/" required>
+                        </div>
+                        <div class="col-sm-2 col-md-2 col-lg-2">
+                            <select name="account" class="form-control" ng-model="$parent.timeLimit"
+                                    ng-options="type.value as type.key for type in timeLimitTypes">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 col-md-3 col-lg-3 control-label"><span class="text-danger">*</span>工资待遇：</label>
+                        <div class="col-sm-3 col-md-3 col-lg-2">
+                            <input type="text" class="form-control" placeholder="请输入工资" ng-model="$parent.salary"
+                                   ng-pattern="/^[0-9]{1,13}$/" required>
+                        </div>
+                        <div class="col-sm-3 col-md-2 col-lg-2">
+                            <select name="account" class="form-control" ng-model="$parent.salary1"
+                                    ng-options="type.value as type.key for type in salary1Types">
+                            </select>
+                        </div>
+                        <div class="col-sm-3 col-md-2 col-lg-2">
+                            <select name="account" class="form-control" ng-model="$parent.salary2"
+                                    ng-options="type.value as type.key for type in salary2Types">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 col-md-3 col-lg-3 control-label"><span class="text-danger">*</span>公司地址：</label>
+                        <nation-area-picker region="t.companyAddr"></nation-area-picker>
+                    </div>
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 col-md-3 col-lg-3 control-label"><span class="text-danger">*</span>班组经验：</label>
+                        <div class="col-sm-9 col-md-7 col-lg-6">
+                            <select name="account" class="form-control" ng-model="t.workExpr"
+                                    ng-options="type.value as type.key for type in teamWorkExprTypes">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <div class="form-group" >
+                        <label class="col-sm-3 col-md-3 col-lg-3 control-label">相关福利：</label>
+                        <div class="col-sm-9 col-md-7 col-lg-6">
+                            <div class="checkbox">
+                                <label class="i-checks w-sm" ng-repeat="jobBoonType in jobBoonTypes">
+                                    <input type="checkbox" checklist-model="t.boon" checklist-value="jobBoonType.value">
+                                    <i></i>
+                                    {{jobBoonType.key}}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 col-md-3 col-lg-3 control-label">工作要求：</label>
+                        <div class="col-sm-9 col-md-7 col-lg-6">
+                            <textarea class="form-control" rows="6" placeholder="不少于10个字" ng-model="t.jobRequire"
+                                      ng-minLength="10" ng-maxLength="20" required></textarea>
+                        </div>
+                    </div>
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                </div>
+                <div ng-if="licence == 'company'">
+                    <div class="form-group">
+                        <label class="col-sm-3 col-md-3 col-lg-3 control-label"><span class="text-danger">*</span>公司类型：</label>
+                        <div class="col-sm-9 col-md-7 col-lg-6">
+                            <select name="account" class="form-control" ng-model="c.companyType" ng-change="companyTypeChange(c.companyType)"
+                                    ng-options="type.value as type.key for type in companyTypes">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 col-md-3 col-lg-3 control-label"><span class="text-danger">*</span>资质等级：</label>
+                        <div class="col-sm-9 col-md-7 col-lg-6">
+                            <select name="account" class="form-control" ng-model="c.credential"
+                                    ng-options="type.value as type.key for type in companyGrades">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 col-md-3 col-lg-3 control-label"><span class="text-danger">*</span>工期：</label>
+                        <div class="col-sm-7 col-md-5 col-lg-4">
+                            <input type="text" class="form-control" placeholder="请输入时间" ng-model="$parent.workTime"
+                                   ng-pattern="/^[1-9]\d*|[1-9]\d*.\d*|0.\d*[1-9]\d*$/" required>
+                        </div>
+                        <div class="col-sm-2 col-md-2 col-lg-2">
+                            <select name="account" class="form-control" ng-model="$parent.timeLimit"
+                                    ng-options="type.value as type.key for type in timeLimitTypes">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 col-md-3 col-lg-3 control-label"><span class="text-danger">*</span>工资待遇：</label>
+                        <div class="col-sm-3 col-md-3 col-lg-2">
+                            <input type="text" class="form-control" placeholder="请输入工资" ng-model="$parent.salary"
+                                   ng-pattern="/^[0-9]{1,13}$/" required>
+                        </div>
+                        <div class="col-sm-3 col-md-2 col-lg-2">
+                            <select name="account" class="form-control" ng-model="$parent.salary1"
+                                    ng-options="type.value as type.key for type in salary1Types">
+                            </select>
+                        </div>
+                        <div class="col-sm-3 col-md-2 col-lg-2">
+                            <select name="account" class="form-control" ng-model="$parent.salary2"
+                                    ng-options="type.value as type.key for type in salary2Types">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 col-md-3 col-lg-3 control-label"><span class="text-danger">*</span>公司地址：</label>
+                        <nation-area-picker region="c.companyAddr"></nation-area-picker>
+                    </div>
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <div class="form-group" >
+                        <label class="col-sm-3 col-md-3 col-lg-3 control-label">相关福利：</label>
+                        <div class="col-sm-9 col-md-7 col-lg-6">
+                            <div class="checkbox">
+                                <label class="i-checks w-sm" ng-repeat="jobBoonType in jobBoonTypes">
+                                    <input type="checkbox" checklist-model="c.boon" checklist-value="jobBoonType.value">
+                                    <i></i>
+                                    {{jobBoonType.key}}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                    <div class="form-group">
+                        <label class="col-sm-3 col-md-3 col-lg-3 control-label">工作要求：</label>
+                        <div class="col-sm-9 col-md-7 col-lg-6">
+                            <textarea class="form-control" rows="6" placeholder="不少于10个字" ng-model="c.jobRequire"
+                                      ng-minLength="10" ng-maxLength="20" required></textarea>
+                        </div>
+                    </div>
+                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-10 col-sm-offset-3 col-md-8 col-md-offset-3">
+                        <button type="submit" class="btn btn-success" ng-click="ok()" ng-disabled='form.$invalid'>发布</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- /Information Perfection -->

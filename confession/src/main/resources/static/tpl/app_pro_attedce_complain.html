@@ -1,0 +1,55 @@
+<!-- breadcrumb -->
+<ul class="breadcrumb bg-white b-b wrapper-sm m-b-none">
+  <li><i class="fa fa-home"></i> 主页</li>
+  <li>考勤管理</li>
+  <li class="active">考勤处理</li>
+</ul>
+<!-- / breadcrumb -->
+<!-- hbox layout -->
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-controller="apealManageController">
+  <div class="wrapper-sm" >
+    <div class="panel panel-default">
+      <div class="row wrapper">
+        <div class="col-md-1 col-sm-4 col-lg-4">
+          <button class="btn btn-default btn-addon" ng-click="open()"><i class="icon icon-note"></i>批量处理</button>
+        </div>
+        <div class="col-md-11 col-sm-8 col-lg-8">
+          <button class="btn btn-default pull-right">筛选</button>
+
+          <select name="account" class="form-control w-xs inline v-middle pull-right m-r-xs" ng-model="status" ng-change="showByStatus()">
+            <option value="2">全部</option>
+            <option value="1">未处理</option>
+            <option value="0">已处理</option>
+          </select>
+          <select name="account" class="form-control w-xs inline v-middle pull-right m-r-xs">
+            <option>全部</option>
+            <option>正常</option>
+            <option>迟到</option>
+            <option>早退</option>
+            <option>缺卡</option>
+          </select>
+          <select name="account" class="form-control w-xs inline v-middle pull-right m-r-xs">
+            <option value="12">12月</option>
+            <option value="11">11月</option>
+            <option value="10">10月</option>
+            <option value="9">9月</option>
+            <option value="8">8月</option>
+            <option value="7">7月</option>
+            <option value="6">6月</option>
+            <option value="5">5月</option>
+            <option value="4">4月</option>
+            <option value="3">3月</option>
+            <option value="2">2月</option>
+            <option value="1">1月</option>
+          </select>
+        </div>
+      </div>
+      <div class="b-t">
+        <div class="table-responsive">
+          <div ng-grid="gridOptions" style="min-height:680px"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /hbox layout -->

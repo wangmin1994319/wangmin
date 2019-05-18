@@ -1,0 +1,32 @@
+
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="close()"><span aria-hidden="true">&times;</span></button>
+            <h3 class="modal-title">上传头像</h3>
+        </div>
+        <div class="wrapper-md row">
+            <div class="col-sm-8">
+                <div class="wrapper-sm b-a bg-white m-r-xs m-b-xs">
+                    <div class="bg-light" style="height:320px">
+                        <img-crop
+                                image="myImage"
+                                result-image="myCroppedImage"
+                                result-image-size="160"
+                                area-type="square"
+                                result-image-format="{{myCroppedFormat}}"
+                                ></img-crop>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="inline bg-white wrapper-sm b-a">
+                    <div class="bg-light">
+                        <img ng-src="{{myCroppedImage}}"/>
+                    </div>
+                </div>
+                <div class="row m-t m-l">
+                    <button class="btn btn-primary" id="select-file" ng-click="selectFile()">选择照片</button>
+                    <button class="btn btn-success" ng-click="headImgUpload(myCroppedImage)">上传头像</button>
+                </div>
+            </div>
+        </div>
+

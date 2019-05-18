@@ -1,0 +1,34 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="close()"><span aria-hidden="true">&times;</span></button>
+    <h3 class="modal-title">填写申诉</h3>
+</div>
+<form class="form-horizontal ng-pristine ng-valid" method="get">
+    <div>
+        <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <div class="col-sm-12">
+                <table class="table">
+                    <tbody>
+                    <tr>
+                        <td class="bg-light bg w-sm text-lg">{{attdTimeSeg}}</td>
+                        <td class="bg-light lt">{{passStatus}} <span class="text-danger">{{status}}</span> {{attdTime}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">结果说明：</label>
+            <div class="col-sm-8">
+                <textarea class="form-control" rows="4" placeholder="请填写结果说明" ng-model="attendanceApeal.reason"></textarea>
+                <span class="help-block m-b-none">审批人：{{approverName}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-default" ng-click="close()">取消</button>
+        <button class="btn btn-success" ng-click="submit()">提交</button>
+    </div>
+</form>

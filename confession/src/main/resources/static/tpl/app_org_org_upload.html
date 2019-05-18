@@ -1,0 +1,44 @@
+<!-- breadcrumb -->
+<ul class="breadcrumb bg-white b-b wrapper-sm m-b-none">
+    <li><i class="fa fa-home"></i> 主页</li>
+    <li>我的企业认证</li>
+</ul>
+<!-- / breadcrumb -->
+<!-- Information Perfection -->
+<div class="wrapper-sm"   ng-controller="socialOrgUploadController">
+    <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+    <div class="panel panel-default">
+        <div class="panel-heading font-bold">请完善我的组织信息</div>
+        <div class="panel-body ">
+            <form class="form-horizontal form-validation" name="legalMsgForm" novalidate>
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-3 col-lg-3 control-label"><span class="text-danger">*</span>上传营业执照：</label>
+                    <div image-upload
+                         targeturi="'socialOrgs/upload/'+org.orgInfo.image+'/businessLic'"
+                         on-change="uploadSuccess(type,title,text)"></div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-3 col-lg-3 control-label"><span class="text-danger">*</span>法人姓名：</label>
+                    <div class="col-sm-9 col-md-7 col-lg-6">
+                        <input type="text" class="form-control" placeholder="请输入法人姓名" ng-model="org.orgInfo.legalPerson" ng-maxLength="20" ng-pattern="/^[\u4e00-\u9fa5][\u4e00-\u9fa5·]{0,}$/" ng-disabled="cantModify || hastUpload" required>
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-3 col-lg-3 control-label"><span class="text-danger">*</span>法人身份证号：</label>
+                    <div class="col-sm-9 col-md-7 col-lg-6">
+                        <input type="text" class="form-control" placeholder="请输入法人身份证号" ng-model="org.orgInfo.legalCardId" ng-pattern="/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/" ng-disabled="cantModify || hastUpload" required>
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <div class="col-sm-10 col-sm-offset-3 col-md-8 col-md-offset-3">
+                        <button type="submit" ng-click="save()" class="btn btn-success" ng-disabled="legalMsgForm.$invalid">保存</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- /Information Perfection -->
